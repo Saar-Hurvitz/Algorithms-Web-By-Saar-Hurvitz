@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Midterm Study Guide</title>
+  <meta name="description" content="Everything the midterm fact sheet asks for, taken from the weekly study guide, with the original slides.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="topbar">
+    <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="toc">Contents</button>
+    <span class="topbar-title">Midterm Study Guide</span>
+  </header>
+
+  <div class="layout">
+    <nav id="toc" class="toc" aria-label="Contents">
+      <div class="toc-head">
+        <p class="toc-week">Midterm Study Guide</p>
+        <p class="toc-back"><a href="../index.html">← The full course, week by week</a></p>
+      </div>
+      <div class="toc-search" role="search">
+        <input id="site-search" type="search" placeholder="Search what was taught" aria-label="Search what was taught"
+          role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-results"
+          autocomplete="off" autocapitalize="off" spellcheck="false">
+      </div>
+      <div id="search-panel" class="search-panel" hidden>
+        <div id="search-results" role="listbox" aria-label="Suggestions"></div>
+        <p id="search-status" class="search-status" role="status"></p>
+      </div>
+      <div id="toc-list"></div>
+      <div class="toc-foot">
+        <label class="theme-pick">Theme
+          <select id="theme-select">
+            <option value="auto">Match system</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
+      </div>
+    </nav>
+
+    <main id="content" class="content" tabindex="-1">
+      <section class="intro">
+        <h1>Midterm Study Guide</h1>
+        <p class="lede">Everything the midterm fact sheet (<code>Exams/mid-term_guide.pdf</code>) asks you to know, in the fact sheet's order: definitions, facts, then algorithms. Each entry is the same one as on the <a href="../index.html">weekly pages</a>, with its slides, animations and exercises.</p>
+
+        <aside class="callout intuition">
+          <span class="callout-title">Every algorithm on the fact sheet is here</span>
+          <p>The shortest path algorithm for acyclic graphs, Dijkstra and Bellman-Ford are taught in Week 5. Floyd-Warshall (all pairs, O(n³)) is taught in Week 6, so its entries are below too, with the all-pair problem and the definition of δᵏ(i, j) that it needs.</p>
+        </aside>
+
+        <div class="legend" aria-label="How to read this page">
+          <p class="legend-title">How to read this page</p>
+          <ul>
+            <li><span class="legend-swatch"><span class="def-chip">Definition</span></span> <span>A box like this holds the formal definition. The <dfn class="legend-dfn">term being defined</dfn> is in bold blue.</span></li>
+            <li><span class="legend-swatch"><mark class="hl">key idea</mark></span> <span>Highlighter marks the sentence to remember.</span></li>
+            <li><span class="legend-swatch"><strong class="crucial">every</strong></span> <span>Underline marks a condition that's easy to miss.</span></li>
+            <li><span class="legend-swatch"><a class="term-ref" href="#t-graph" data-term="graph">graph</a></span> <span>A dotted underline is a term you already met. Hover to see its definition, click to jump to it.</span></li>
+            <li><span class="legend-swatch"><span class="added-tag">not on the slides</span></span> <span>An explanation added for this site. Everything else comes from the course material.</span></li>
+          </ul>
+        </div>
+
+        <details class="checklist-box">
+          <summary>The fact sheet, line by line (paraphrased): where each line is covered</summary>
+          <ul id="checklist-map"></ul>
+        </details>
+      </section>
+
+      <div id="entries"></div>
+    </main>
+  </div>
+
+  <!-- Hover card for term links -->
+  <div id="term-tip" class="term-tip" role="tooltip" hidden></div>
+
+  <!-- Return button shown after jumping through a term link -->
+  <button id="back-jump" class="back-jump" type="button" hidden>↩ Back to where you were</button>
+
+  <!-- Slide viewer -->
+  <dialog id="slide-viewer" class="slide-viewer" aria-label="Slide viewer">
+    <div class="viewer-bar">
+      <span id="viewer-caption"></span>
+      <div class="viewer-actions">
+        <button type="button" id="viewer-prev" aria-label="Previous slide">‹</button>
+        <button type="button" id="viewer-next" aria-label="Next slide">›</button>
+        <button type="button" id="viewer-close" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <img id="viewer-img" alt="">
+  </dialog>
+
+  <script src="../js/graph-view.js"></script>
+  <script src="../js/graph-logic.js"></script>
+  <script src="../js/exercises.js"></script>
+  <script src="../js/figures.js"></script>
+  <script src="../js/player.js"></script>
+  <script src="../js/algo-view.js"></script>
+  <script src="../js/algorithms/indegree.js"></script>
+  <script src="../js/algorithms/toposort.js"></script>
+  <script src="../js/algorithms/source-removal.js"></script>
+  <script src="../js/algorithms/anagram.js"></script>
+  <script src="../js/algorithms/euler.js"></script>
+  <script src="../js/algorithms/tournament.js"></script>
+  <script src="../js/algorithms/dfs.js"></script>
+  <script src="../js/algorithms/bfs.js"></script>
+  <script src="../js/algorithms/dfs-directed.js"></script>
+  <script src="../js/algorithms/relax.js"></script>
+  <script src="../js/algorithms/sssp.js"></script>
+  <script src="../js/algorithms/fw.js"></script>
+  <script src="../js/anagram-view.js"></script>
+  <script src="../js/euler-view.js"></script>
+  <script src="../js/tournament-view.js"></script>
+  <script src="../js/course.js"></script>
+  <script src="../js/weeks/week1/terms.js"></script>
+  <script src="../js/weeks/week1/part-a.js"></script>
+  <script src="../js/weeks/week1/part-b.js"></script>
+  <script src="../js/weeks/week1/week.js"></script>
+  <script src="../js/weeks/week2/terms.js"></script>
+  <script src="../js/weeks/week2/part-a.js"></script>
+  <script src="../js/weeks/week2/part-b.js"></script>
+  <script src="../js/weeks/week2/week.js"></script>
+  <script src="../js/weeks/week3/terms.js"></script>
+  <script src="../js/weeks/week3/part-a.js"></script>
+  <script src="../js/weeks/week3/part-b.js"></script>
+  <script src="../js/weeks/week3/week.js"></script>
+  <script src="../js/weeks/week4/terms.js"></script>
+  <script src="../js/weeks/week4/part-a.js"></script>
+  <script src="../js/weeks/week4/part-b.js"></script>
+  <script src="../js/weeks/week4/week.js"></script>
+  <script src="../js/weeks/week5/terms.js"></script>
+  <script src="../js/weeks/week5/part-a.js"></script>
+  <script src="../js/weeks/week5/part-b.js"></script>
+  <script src="../js/weeks/week5/week.js"></script>
+  <script src="../js/weeks/week6/terms.js"></script>
+  <script src="../js/weeks/week6/part-a.js"></script>
+  <script src="../js/weeks/week6/part-b.js"></script>
+  <script src="../js/weeks/week6/week.js"></script>
+  <script src="midterm.js"></script>
+  <script src="../js/search-logic.js"></script>
+  <script src="../js/render.js"></script>
+</body>
+</html>

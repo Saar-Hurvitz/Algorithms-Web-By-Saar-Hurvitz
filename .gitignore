@@ -1,0 +1,14 @@
+# Course source material: the site does not load these, and they should not be published
+/weeks/
+/Exams/
+
+# Generated review inputs (node tools/review-pack.js)
+/.review-pack/
+
+# Local Claude Code state (the project skills in .claude/skills are kept)
+/.claude/settings.local.json
+/.claude/scheduled_tasks.lock
+
+# System and tooling files
+.DS_Store
+node_modules/
