@@ -546,6 +546,14 @@ Decided in a review, with the reason. A reviewer should not raise these again.
 
 ## Reviews
 
+### 2026-11-25: Midterm page, beyond the fact sheet
+- **Scope:** the user asked for the midterm page to cover the exam, not only the fact sheet (the course announcement says the exam covers all of weeks 1–6, with a "suggest an algorithm" question worth 28 points). Added a section "Beyond the fact sheet" (w6-neg-detect, w6-neg-proof, w6-techniques, w6-gas, w6-copies, w6-pizza) and 8 recitation exercises to Practice (w2-r-ex1, w2-r-ex2, w2-r-ex3, w3-r-ex3, w5-r-ex1, w5-r-ex3, w5-r-ex4, w6-r-ex1), then the 5 lecture exercises it still lacked (adjacency-list, w3-minimal, w3-build-spanning, w3-r-count, w4-weighted-ex), so Practice holds every exercise of weeks 1–6; a notice on the page that the weekly pages hold the rest; CLAUDE.md updated to match. No entry text changed.
+- **Checked and found correct:** VisualCheck.run(2), (3), (5) and (6) on the midterm page (39 runs, no problem; width, dark mode, clipping clean); the console clean after reload; the 14 added entries' 55 slide images load, their 92 in-page links resolve and 12 links to the weekly page point there; check-answers, make-inventory and review-fingerprints check clean.
+
+| # | Kind | Finding | Decision |
+|---|---|---|---|
+| M2 | midterm | The page held only the fact sheet's items, but the exam covers all of weeks 1–6 | Added the section and exercises above; the full rest stays on the weekly pages, which the page now says |
+
 Newest first.
 
 ### 2026-11-25: Midterm page, full check

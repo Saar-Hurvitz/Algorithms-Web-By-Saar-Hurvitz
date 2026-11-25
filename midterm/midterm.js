@@ -7,7 +7,8 @@
    and terms of all weeks and replaces the weeks and parts with:
      - one group, "Midterm", whose "checklist" is the fact sheet's lines and whose
        `links` say which entries cover each line;
-     - sections following the fact sheet: Definitions, Facts, Algorithms, Practice.
+     - sections following the fact sheet: Definitions, Facts, Algorithms; then Beyond the
+       fact sheet (exam material no line lists) and Practice.
    A term defined in an entry that is not on this page links to the main page.
    ========================================================================== */
 (function () {
@@ -56,7 +57,10 @@
     { id: 'D', title: 'Definitions', sub: 'The fact sheet\'s definitions, in its order', ids: ['graph', 'directed', 'notation', 'simple', 'simple-directed', 'bipartite', 'families', 'r-clique', 'complete-bipartite', 'paths-cycles', 'r-connected', 'r-strongly-connected', 'w3-tree', 'w3-directed-tree', 'topological-sort', 'w2-euler-def', 'w2-de-bruijn-seq'] },
     { id: 'F', title: 'Facts', sub: 'The fact sheet\'s facts, in its order', ids: ['handshaking', 'r-iff', 'w2-cycle-condition', 'w2-path-condition', 'w2-hamilton', 'w2-de-bruijn-graph'] },
     { id: 'A', title: 'Algorithms', sub: 'The fact sheet\'s algorithms, with their animations', ids: ['toposort-queue', 'analysis', 'w3-dfs', 'w3-st', 'w4-bfs-shortest', 'w4-bfs', 'w4-general', 'w5-dag', 'w5-dag-time', 'w5-dijkstra', 'w5-dijkstra-time', 'w5-bf', 'w5-bf-time', 'w6-apsp', 'w6-delta', 'w6-fw', 'w6-fw-proof'] },
-    { id: 'P', title: 'Practice', sub: 'Exercises on the same topics', ids: ['valid-orders', 'source-removal', 'r-scc', 'w2-bridges-back', 'w2-classify', 'w2-trace', 'w2-de-bruijn-build', 'w2-euler-or-ham', 'w2-r-ex4', 'w3-dfs-hand', 'w3-r-identify', 'w3-r-find-roots', 'w3-r-ex1', 'w3-r-ex2', 'w3-r-edges', 'w3-r-ex6', 'w3-r-ex7', 'w4-bfs-hand', 'w4-label-ex', 'w4-r-ex1', 'w4-r-ex2', 'w5-sp-hand', 'w5-shift-ex', 'w5-bf-order', 'w5-r-ex2', 'w6-bf-table', 'w6-r-edges', 'w6-r-bf-run', 'w6-fw-hand', 'w6-r-ex2', 'w6-r-ex5', 'w6-r-ex3', 'w6-r-ex4'] },
+    /* The exam covers all of weeks 1-6, not only the fact sheet: these are the entries its
+       "suggest an algorithm" question and negative cycles need, which no fact-sheet line lists */
+    { id: 'B', title: 'Beyond the fact sheet', sub: 'Also on the exam: negative cycles and how to suggest an algorithm', ids: ['w6-neg-detect', 'w6-neg-proof', 'w6-techniques', 'w6-gas', 'w6-copies', 'w6-pizza'] },
+    { id: 'P', title: 'Practice', sub: 'Exercises on the same topics', ids: ['adjacency-list', 'valid-orders', 'source-removal', 'r-scc', 'w2-bridges-back', 'w2-classify', 'w2-trace', 'w2-de-bruijn-build', 'w2-euler-or-ham', 'w2-r-ex1', 'w2-r-ex2', 'w2-r-ex3', 'w2-r-ex4', 'w3-minimal', 'w3-build-spanning', 'w3-dfs-hand', 'w3-r-identify', 'w3-r-find-roots', 'w3-r-count', 'w3-r-ex1', 'w3-r-ex2', 'w3-r-ex3', 'w3-r-edges', 'w3-r-ex6', 'w3-r-ex7', 'w4-bfs-hand', 'w4-label-ex', 'w4-weighted-ex', 'w4-r-ex1', 'w4-r-ex2', 'w5-sp-hand', 'w5-shift-ex', 'w5-bf-order', 'w5-r-ex1', 'w5-r-ex2', 'w5-r-ex3', 'w5-r-ex4', 'w6-bf-table', 'w6-r-edges', 'w6-r-bf-run', 'w6-r-ex1', 'w6-fw-hand', 'w6-r-ex2', 'w6-r-ex5', 'w6-r-ex3', 'w6-r-ex4'] },
   ];
 
   const checklist = {}, links = {};
