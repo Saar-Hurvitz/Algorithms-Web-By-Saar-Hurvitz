@@ -137,7 +137,7 @@ E.w2PathFromCycle = {
 </aside>`,
   init(root) {
     const pg = root.querySelector('[data-play="w2-add-edge"]');
-    const box = pg.querySelector('.graph-box'), cap = pg.querySelector('.caption-live'), btn = pg.querySelector('button');
+    const box = pg.querySelector('.graph-box'), cap = pg.querySelector('.caption-live'), btn = pg.querySelector('.controls button');
     let added = false;
     const draw = () => {
       const g = Exercises.graphs[added ? '2L17+' : '2L17'];
@@ -281,7 +281,7 @@ E.w2Underlying = {
 </div>`,
   init(root) {
     const pg = root.querySelector('[data-play="w2-underlying"]');
-    const btn = pg.querySelector('button'), cap = pg.querySelector('.caption-live');
+    const btn = pg.querySelector('.controls button'), cap = pg.querySelector('.caption-live');
     const gv = Exercises.gvMulti(pg.querySelector('.graph-box'), Exercises.graphs['2L25']);
     let directed = true;
     const show = () => {

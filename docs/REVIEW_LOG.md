@@ -546,6 +546,15 @@ Decided in a review, with the reason. A reviewer should not raise these again.
 
 ## Reviews
 
+### 2026-11-25: Week 2, playground button fix
+- **Scope:** reported by the user: the "Add the edge (a,b)" button of w2-path-from-cycle (entry 61) did nothing.
+- **Cause:** its init took the first button in the playground, and the slide citation chip in the hint ({{2L17}}) is a button too, so the chip got the label and the click handler. w2-underlying ({{2L25}}) had the same code. Both now take `.controls button`; no other init picks a button that way.
+- **Checked:** in the browser, both buttons toggle back and forth (edge added and deleted, directions removed and restored) with a real click, and the citation chips keep their labels; check-answers, make-inventory and review-fingerprints check clean.
+
+| # | Kind | Finding | Decision |
+|---|---|---|---|
+| V3 | bug | The playground buttons of w2-path-from-cycle and w2-underlying did nothing; the slide chip took their label | Fixed |
+
 ### 2026-11-25: Midterm page, beyond the fact sheet
 - **Scope:** the user asked for the midterm page to cover the exam, not only the fact sheet (the course announcement says the exam covers all of weeks 1–6, with a "suggest an algorithm" question worth 28 points). Added a section "Beyond the fact sheet" (w6-neg-detect, w6-neg-proof, w6-techniques, w6-gas, w6-copies, w6-pizza) and 8 recitation exercises to Practice (w2-r-ex1, w2-r-ex2, w2-r-ex3, w3-r-ex3, w5-r-ex1, w5-r-ex3, w5-r-ex4, w6-r-ex1), then the 5 lecture exercises it still lacked (adjacency-list, w3-minimal, w3-build-spanning, w3-r-count, w4-weighted-ex), so Practice holds every exercise of weeks 1–6; a notice on the page that the weekly pages hold the rest; CLAUDE.md updated to match. No entry text changed.
 - **Checked and found correct:** VisualCheck.run(2), (3), (5) and (6) on the midterm page (39 runs, no problem; width, dark mode, clipping clean); the console clean after reload; the 14 added entries' 55 slide images load, their 92 in-page links resolve and 12 links to the weekly page point there; check-answers, make-inventory and review-fingerprints check clean.
