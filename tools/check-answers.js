@@ -21,5 +21,14 @@ for (const f of fs.readdirSync(checksDir).filter(x => /^week\d+\.js$/.test(x)).s
   console.log(`\n# Week ${weekNum(f)}`);
   require(path.join(checksDir, f))({ eq, L: GraphLogic, G: Exercises.graphs, A: Algorithms });
 }
+// Past exams: tools/checks/exam-<id>.js checks past-exams/<id>/<id>.js, the exam's answer key,
+// against what its visualizations compute
+for (const f of fs.readdirSync(checksDir).filter(x => /^exam-[\w-]+\.js$/.test(x)).sort()) {
+  const id = f.slice(5, -3);
+  console.log(`\n# Exam ${id}`);
+  require(path.join(d, 'past-exams', id, `${id}.js`));
+  const key = Object.fromEntries(EXAM.questions.map(q => [q.id, q.answer]));
+  require(path.join(checksDir, f))({ eq, L: GraphLogic, G: Exercises.graphs, A: Algorithms, key });
+}
 console.log(bad ? `\n${bad} FAILED` : '\nall passed');
 process.exit(bad ? 1 : 0);

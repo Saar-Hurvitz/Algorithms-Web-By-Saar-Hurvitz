@@ -25,7 +25,10 @@ window.VisualCheck = (function () {
     const C = doc.defaultView.COURSE;
     /* On the midterm page, C.parts are its sections; C.sourceParts keeps the weeks, so run(N)
        there checks the week N entries the midterm page shows. */
-    const ids = (C.sourceParts || C.parts).filter(p => String(p.week) === String(week)).flatMap(p => p.entries.map(e => e.id));
+    /* On an exam page (past-exams/), its parts are week 'X': run('X') checks the questions
+       (open every solution first, so the visualizations are mounted). */
+    const parts = [...(C.sourceParts || []), ...C.parts].filter(p => String(p.week) === String(week));
+    const ids = [...new Set(parts.flatMap(p => p.entries.map(e => e.id)))];
     return ids.map(id => doc.getElementById(`e-${id}`)).filter(Boolean);
   };
 
@@ -115,7 +118,7 @@ window.VisualCheck = (function () {
   }
 
   /* 3. Exercises mounted */
-  const exercises = week => sectionsOf(document, week).flatMap(sec => [...sec.querySelectorAll('.ex-mount')].map(m => `${sec.id.slice(2)}: ${m.dataset.ex}${m.dataset.graphs ? ` (${m.dataset.graphs})` : ''}`));
+  const exercises = week => sectionsOf(document, week).flatMap(sec => [...sec.querySelectorAll('.ex-mount')].map(m => `${sec.id.slice(2)}: ${m.dataset.ex || m.dataset.lazyEx}${m.dataset.graphs ? ` (${m.dataset.graphs})` : ''}`));
 
   async function run(week) {
     const anim = await animations(week);

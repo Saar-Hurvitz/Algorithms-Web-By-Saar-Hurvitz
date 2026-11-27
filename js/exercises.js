@@ -126,6 +126,40 @@ window.Exercises = (function () {
     '5R15': { title: 'Exercise 3: the graph G (recitation slide 15)', directed: true, start: 's', nodes: nodes('s,110,70 a,390,70 b,250,240'),
       edges: pairs(['s>a', 'a>b', 'b>s']), weights: [5, 3, 2] },
   };
+  /* Past exam: midterm 2004 (Exams/MidTermExams/mid04sol.pdf), key = 2004E + question.
+     The exam draws graphs only for A4 (page 2), A7 (page 3); the others are added examples
+     that satisfy each question's premise, and the page tags them as added. */
+  Object.assign(G, {
+    /* A1: v gets its final d in sweep 2. The edges are listed in Bellman-Ford's order. */
+    '2004E1a': { title: 'Shortest path with 2 edges (added)', directed: true, start: 's', nodes: nodes('s,60,150 a,250,55 v,440,150'),
+      edges: pairs(['a>v', 's>v', 's>a']), weights: [1, 5, 1] },
+    '2004E1b': { title: 'Shortest path with 3 edges (added)', directed: true, start: 's', nodes: nodes('s,50,150 a,180,50 b,330,50 v,450,150'),
+      edges: pairs(['b>v', 's>v', 's>a', 'a>b']), weights: [1, 10, 1, 1] },
+    /* A2: the triangle of the solution. s lists v first, so DFS(s) marks v, and v marks u. */
+    '2004E2': { title: 'Triangle s, u, v (the solution\'s example)', directed: false, start: 's', nodes: nodes('s,250,45 v,120,240 u,380,240'),
+      edges: pairs(['s-v', 's-u', 'v-u']), lists: { s: ['v', 'u'], v: ['s', 'u'], u: ['s', 'v'] } },
+    /* A3: d.v goes down 4 times */
+    '2004E3a': { title: 'v.d goes down 4 times, in-degree 4 (added)', directed: true, start: 's', nodes: nodes('s,50,145 a,230,28 b,230,108 c,230,188 d,230,265 v,450,145'),
+      edges: pairs(['s>a', 's>b', 's>c', 's>d', 'a>v', 'b>v', 'c>v', 'd>v']), weights: [1, 2, 3, 4, 10, 8, 6, 4] },
+    '2004E3b': { title: 'v.d goes down 4 times, in-degree 5 (added)', directed: true, start: 's', nodes: nodes('s,50,145 a,230,28 b,230,108 c,230,188 d,230,265 e,380,265 v,450,120'),
+      edges: pairs(['s>a', 's>b', 's>c', 's>d', 'a>v', 'b>v', 'c>v', 'd>v', 'd>e', 'e>v']), weights: [1, 2, 3, 4, 10, 8, 6, 4, 1, 9] },
+    /* A4: the exam's drawing (page 2) */
+    '2004E4': { title: 'The exam\'s graph (page 2)', directed: true, nodes: nodes('A,70,150 B,250,60 C,250,240 D,430,150'), edges: pairs(['A>B', 'A>C', 'B>D']) },
+    /* A5: δ(i,j) is first finite at δ⁵ and never changes after it. i = 7, j = 8, every weight 1.
+       Floyd-Warshall numbers the vertices in this list's order, so it lists them 1..8. */
+    '2004E5': { title: 'Example: i = 7, j = 8 (added)', directed: true, i: '7', j: '8', nodes: nodes('1,130,145 2,200,145 3,300,145 4,370,145 5,250,40 6,250,250 7,45,145 8,455,145'),
+      edges: pairs(['7>5', '5>8', '7>6', '6>8']), weights: [1, 1, 1, 1] },
+    /* A6: three graphs with an Euler cycle */
+    '2004E6a': { title: 'A cycle, C₅', directed: false, nodes: nodes('1,250,35 2,410,120 3,350,250 4,150,250 5,90,120'), edges: pairs(['1-2', '2-3', '3-4', '4-5', '5-1']) },
+    '2004E6b': { title: 'The complete graph K₅', directed: false, nodes: nodes('1,250,35 2,410,120 3,350,250 4,150,250 5,90,120'),
+      edges: pairs(['1-2', '1-3', '1-4', '1-5', '2-3', '2-4', '2-5', '3-4', '3-5', '4-5']) },
+    '2004E6c': { title: 'Two triangles that share a vertex', directed: false, nodes: nodes('1,90,50 2,90,240 3,250,145 4,410,50 5,410,240'), edges: pairs(['1-2', '2-3', '3-1', '3-4', '4-5', '5-3']) },
+    /* A7: the exam's drawing (page 3). The exam names s, A, B, C; D and E are added. */
+    '2004E7': { title: 'The exam\'s graph (page 3)', directed: false, start: 's', nodes: nodes('s,250,35 A,160,120 B,340,120 D,70,245 C,250,245 E,430,245'),
+      edges: pairs(['s-A', 's-B', 'A-B', 'A-D', 'A-C', 'D-C', 'B-C', 'B-E', 'C-E']), tree: pairs(['s-A', 's-B', 'A-D', 'B-E', 'E-C']) },
+    /* B1: the solution's 4-cycle. The names S, a, b, c are added. */
+    '2004E8': { title: 'A cycle of length 4 (the exam\'s example)', directed: false, start: 'S', nodes: nodes('S,250,40 a,120,145 c,380,145 b,250,250'), edges: pairs(['S-a', 'a-b', 'b-c', 'c-S']) },
+  });
   /* 4L11 draws the same graph and the same lists as 3L31 */
   G['4L11'] = Object.assign({}, G['3L31'], { title: 'The lecture graph (slide 11)', start: '1' });
   /* 5R15: G′ of Exercise 3 is built from G by GraphLogic.almostValidGraph (5R16), laid out as the slide draws it */
@@ -2564,11 +2598,24 @@ window.Exercises = (function () {
         },
       },
     };
+    /* Past exam 2004, Part B 1: no "same data structure", so the two runs may order the neighbors differently */
+    claims['2004E8'] = {
+      text: 'Claim: G is a connected undirected graph. Run BFS(s) and DFS(s). If u is a leaf in the DFS tree, then u is a leaf in the BFS tree.',
+      intro: 'The exam\'s counterexample: a cycle of length 4 (the names S, a, b, c are added). True or false?',
+      verdict: g => !L.leafGap(idsOf(g), g.edges, g.start, false),
+      show: g => {
+        const ids = idsOf(g), r = L.leafGap(ids, g.edges, g.start, false), same = L.leafGap(ids, g.edges, g.start, true);
+        const kids = r.bfs.filter(([a]) => a === r.u).map(([, b]) => b);
+        const idx = t => t.map(([a, b]) => eIndex(g, a, b));
+        const first = t => t.filter(([a]) => a === g.start).map(([, b]) => b);
+        return { paths: [[], []], sets: [idx(r.dfs), idx(r.bfs)], text: `DFS(S) can enter ${first(r.dfs)[0]} first and go around the cycle, so ${r.u} is a leaf of its tree (shown first). BFS(S) can take ${first(r.bfs).join(' before ')}, and then ${r.u} is the parent of ${kids.join(', ')} (shown second). So the claim is false. Note: the two runs read S's neighbors in different orders. With the same lists in both runs, the 4-cycle has ${same ? 'a' : 'no'} counterexample (computed over every order).` };
+      },
+    };
     let key, g, gv, stop = () => {};
     function load(k) {
       stop(); key = k; g = G[key];
       gv = gvWeighted(box, g); claim.textContent = claims[key].text;
-      say(msg, key === '6R46' ? 'Is the claim true or false? The slide draws no graph: this is its "simple cycle of length 3", drawn here, with the names a and b added.' : 'Is the claim true or false? The graph is the one on the slide.');
+      say(msg, claims[key].intro ? claims[key].intro : key === '6R46' ? 'Is the claim true or false? The slide draws no graph: this is its "simple cycle of length 3", drawn here, with the names a and b added.' : 'Is the claim true or false? The graph is the one on the slide.');
     }
     const answer = said => {
       stop();
@@ -2871,14 +2918,14 @@ window.Exercises = (function () {
      random test in tools/checks/week6.js backs them.
      ------------------------------------------------------------------------ */
   function fwClaims(host) {
-    const premise = 'G is a directed graph with arbitrary weights (no negative cycles) and n > 10 vertices. For a pair i, j, the value of δ(i,j) decreases for the first time (from ∞ to a finite value) when δ⁶(i,j) is calculated. Also, δⁿ(i,j) = δ⁶(i,j).';
+    const recPremise = 'G is a directed graph with arbitrary weights (no negative cycles) and n > 10 vertices. For a pair i, j, the value of δ(i,j) decreases for the first time (from ∞ to a finite value) when δ⁶(i,j) is calculated. Also, δⁿ(i,j) = δ⁶(i,j).';
     const facts = key => {
       const g = G[key], ids = idsOf(g), r = L.floydWarshall(ids, wedgesOf(g)), i = ids.indexOf(g.i), j = ids.indexOf(g.j);
       const seq = r.steps.map(M => M[i][j]);
       const paths = L.allShortestPaths(ids, wedgesOf(g), g.i, g.j);
       return { g, seq, paths, inner: p => p.slice(1, -1).map(Number) };
     };
-    const claims = [
+    const recClaims = [
       { key: '6R28', slide: '6R28', text: '1. Every shortest path from i to j passes only in {1,2,3,4,5,6} as internal nodes.',
         verdict: f => f.paths.every(p => f.inner(p).every(x => x <= 6)),
         why: f => `False (6R28): it is possible, for example, that i–7–j is another shortest path. In this graph, ${f.paths.map(p => p.map(v => nm(f.g, v)).join('–')).join(' and ')} both weigh ${f.seq[f.seq.length - 1]}, and one of them uses vertex 7.` },
@@ -2892,6 +2939,26 @@ window.Exercises = (function () {
         verdict: f => f.seq[5] === Infinity,
         why: f => `True (6R34): otherwise the value of δ(i,j) would be finite before δ⁶(i,j) is calculated. Here δ⁵(i,j) = ${fmtD(f.seq[5])}.` },
     ];
+    /* data-set picks the question: Recitation 6 Exercise 2 (default), or a past exam's version */
+    const sets = {
+      '6R': { premise: recPremise, claims: recClaims, first: 6,
+        intro: 'The graph is an example with n = 11 that satisfies the premise (added: i is vertex 10, j is vertex 11). δ(i,j) is ∞ up to δ⁵ and first finite at δ⁶, and δ¹¹ = δ⁶. True or false?' },
+      '2004E5': { first: 5,
+        premise: 'G has arbitrary weights (no negative cycles). During Floyd-Warshall, for some pair i, j, the value of δ(i,j) does not change from the 5th iteration (when δ⁵(i,j) is computed) until the end of the run.',
+        intro: 'The graph is an example with n = 8 that satisfies the premise (added: i is vertex 7, j is vertex 8, every weight is 1). δ(i,j) is first finite at δ⁵ and stays the same up to δ⁸. Is each option true or false?',
+        claims: [
+          { key: '2004E5', text: '1. Every shortest path between i and j passes only through the vertices i, j, 1, 2, 3, 4, 5.',
+            verdict: f => f.paths.every(p => f.inner(p).every(x => x <= 5)),
+            why: f => `False: here ${f.paths.map(p => p.map(v => nm(f.g, v)).join('–')).join(' and ')} both weigh ${f.seq[f.seq.length - 1]}, and the second passes through vertex 6. δ only changes when it goes down, so a second shortest path found later leaves δ(i,j) as it was.` },
+          { key: '2004E5', text: '2. There are at least five different shortest paths between i and j.',
+            verdict: f => f.paths.length >= 5,
+            why: f => `False: here there ${f.paths.length === 1 ? 'is exactly one shortest path' : `are only ${f.paths.length}`}, ${f.paths.map(p => p.map(v => nm(f.g, v)).join('–')).join(', ')}.` },
+          { key: '2004E5', text: '3. There is a shortest path between i and j that passes only through the vertices i, j, 1, 2, 3, 4, 5.',
+            verdict: f => f.seq[5] === f.seq[f.seq.length - 1],
+            why: f => `True: δ⁵(i,j) is the length of a shortest path whose internal vertices are in {1,…,5}, and it equals δⁿ(i,j), the length of a shortest path. Here δ⁵(i,j) = δ⁸(i,j) = ${fmtD(f.seq[5])}.` },
+        ] },
+    };
+    const S = sets[host.dataset.set || '6R'], premise = S.premise, claims = S.claims;
     host.innerHTML = `<div class="ex"><p class="ex-title">Try it: true or false?</p>
       <p class="ex-hint">${premise}</p>
       <div class="ex-controls" data-claims></div>
@@ -2913,8 +2980,8 @@ window.Exercises = (function () {
       seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.q === x)));
       claimBox.textContent = q.text;
       gv = gvWeighted(box, f.g);
-      seqBox.innerHTML = f.seq.map((v, k) => `<span class="seq-chip${k === 6 ? ' first' : ''}"><small>δ${supN(k)}</small>${fmtD(v)}</span>`).join('');
-      say(msg, `The graph is an example with n = 11 that satisfies the premise (added: i is vertex 10, j is vertex 11). δ(i,j) is ∞ up to δ⁵ and first finite at δ⁶, and δ¹¹ = δ⁶. True or false?`);
+      seqBox.innerHTML = f.seq.map((v, k) => `<span class="seq-chip${k === S.first ? ' first' : ''}"><small>δ${supN(k)}</small>${fmtD(v)}</span>`).join('');
+      say(msg, S.intro);
     }
     function answer(said) {
       stop();
@@ -3037,6 +3104,227 @@ window.Exercises = (function () {
     say(msg, 'The two weights marked "?" are missing.');
   }
 
+
+  /* ========================================================================
+     Past exams (past-exams/). Each widget visualizes one question; its answer is
+     computed here and checked in tools/checks/exam-*.js.
+     ======================================================================== */
+  const exShell = (title, hint) => `<div class="ex"><p class="ex-title">${title}</p>${hint ? `<p class="ex-hint">${hint}</p>` : ''}
+      <div class="ex-controls" data-c></div><div class="ex-graph"></div><div class="ex-msg" aria-live="polite"></div></div>`;
+  const segOf = (labels, onPick, aria) => {
+    const seg = document.createElement('div');
+    seg.className = 'seg small'; seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', aria);
+    seg.innerHTML = labels.map((l, x) => `<button type="button" data-k="${x}" aria-pressed="${x === 0}">${l}</button>`).join('');
+    seg.addEventListener('click', ev => {
+      const b = ev.target.closest('button'); if (!b) return;
+      seg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      onPick(+b.dataset.k);
+    });
+    return seg;
+  };
+  /* Depth of every vertex in a tree given as [[a, b], …] edges, rooted at r */
+  const treeDepth = (tree, r) => {
+    const depth = { [r]: 0 };
+    let grew = true;
+    while (grew) {
+      grew = false;
+      tree.forEach(([a, b]) => {
+        if (a in depth && !(b in depth)) { depth[b] = depth[a] + 1; grew = true; }
+        else if (b in depth && !(a in depth)) { depth[a] = depth[b] + 1; grew = true; }
+      });
+    }
+    return depth;
+  };
+
+  /* A drawing of a graph from an exam question, with no controls. data-graph = the key;
+     data-tree: draw only the graph's `tree` edges (a spanning tree drawn beside its graph) */
+  function graphFigure(host) {
+    const g = G[host.dataset.graph], tree = host.dataset.tree != null;
+    host.innerHTML = `<figure class="exam-fig"><div class="ex-graph"></div><figcaption>${tree ? 'The spanning tree' : g.title}</figcaption></figure>`;
+    const gv = gvWeighted(host.querySelector('.ex-graph'), tree ? Object.assign({}, g, { edges: g.tree, title: `${g.title}: the spanning tree` }) : g);
+    if (tree) g.tree.forEach((_, i) => gv.setEdgeState(`e${i}`, 'out'));
+  }
+
+  /* A2 (2004): DFS(s) on the triangle marks v, then u from v; BFS(s) labels both 1 */
+  function dfsBfsLabels(host) {
+    const g = G['2004E2'], ids = idsOf(g);
+    host.innerHTML = exShell('Try it: DFS(s), then BFS(s), on the triangle',
+      `Adjacency lists (added: the exam gives none): ${ids.map(v => `${v}: ${g.lists[v].join(', ')}`).join(' · ')}. With s listing v first, DFS(s) marks v, and v marks u, as the question says.`);
+    const c = host.querySelector('[data-c]'), box = host.querySelector('.ex-graph'), msg = host.querySelector('.ex-msg');
+    let gv, stop = () => {};
+    const reset = () => { stop(); gv = gvWeighted(box, g, { badges: true }); };
+    const showTree = (tree, state) => tree.map(([a, b]) => () => { const i = eIndex(g, a, b); gv.setEdgeState(`e${i}`, state); drawIn(gv.edgeEl(`e${i}`)); });
+    c.append(makeBtn('Run DFS(s)', null, () => {
+      reset();
+      const r = L.dfsRun(g.lists, 's');
+      const steps = r.order.map((v, k) => () => { gv.setNodeState(v, 'c1'); gv.setBadge(v, `#${k + 1}`); pop(gv.nodeEl(v)); });
+      const tree = showTree(r.tree, 'out');
+      stop = seq([steps[0], tree[0], steps[1], tree[1], steps[2]].filter(Boolean), 500);
+      const parentU = r.tree.find(([, b]) => b === 'u')[0];
+      say(msg, `DFS(s) marks ${r.order.join(', ')} (the badges give the order). u is marked from ${parentU}, so the edge (${parentU},u) is in the spanning tree: the premise holds.`);
+    }), makeBtn('Run BFS(s)', null, () => {
+      reset();
+      const r = L.bfsRun(g.lists, 's');
+      const steps = r.order.map(v => () => { gv.setNodeState(v, 'c2'); gv.setBadge(v, r.label[v]); pop(gv.nodeEl(v)); });
+      const tree = showTree(r.tree, 'blocked');
+      stop = seq([steps[0], tree[0], tree[1], steps[1], steps[2]], 500);
+      const same = r.label.u === r.label.v;
+      say(msg, `BFS(s) labels s = ${r.label.s}, v = ${r.label.v}, u = ${r.label.u} (the badges). label(v) ${same ? '=' : '≠'} label(u): ${same ? 'equal labels are possible, so neither "always smaller" nor "always larger" holds.' : 'they differ here.'}`, same ? 'ok' : null);
+    }));
+    reset();
+    say(msg, 'Run DFS(s) first, then BFS(s), and compare the labels of u and v.');
+  }
+
+  /* A6 (2004): is the Euler cycle also a Hamiltonian cycle? */
+  function eulerHam(host) {
+    const keys = ['2004E6a', '2004E6b', '2004E6c'];
+    host.innerHTML = exShell('Try it: is the Euler cycle also a Hamiltonian cycle?');
+    const c = host.querySelector('[data-c]'), box = host.querySelector('.ex-graph'), msg = host.querySelector('.ex-msg');
+    let g, gv, stop = () => {};
+    function load(k) {
+      stop(); g = G[k]; gv = gvWeighted(box, g, { badges: true });
+      const deg = L.degrees(idsOf(g), g.edges);
+      idsOf(g).forEach(v => gv.setBadge(v, `deg ${deg[v]}`));
+      say(msg, `${g.title}: n = ${idsOf(g).length}, m = ${g.edges.length}, every degree is even. Trace its Euler cycle and see whether it passes through each vertex exactly once.`);
+    }
+    c.append(presetSelect(keys, load), makeBtn('Trace the Euler cycle', null, () => {
+      stop(); clearGraph(gv, g);
+      const ids = idsOf(g), tour = L.eulerTour(ids, g.edges, false);
+      const visits = Object.fromEntries(ids.map(v => [v, tour.vertices.slice(0, -1).filter(x => x === v).length]));
+      ids.forEach(v => gv.setBadge(v, ''));
+      stop = playEdges(gv, tour.edges);
+      const later = setTimeout(() => ids.forEach(v => { gv.setBadge(v, `×${visits[v]}`); if (visits[v] > 1) { gv.setNodeState(v, 'bad'); pop(gv.nodeEl(v)); } }), reduced() ? 0 : tour.edges.length * 130 + 200);
+      const prev = stop; stop = () => { prev(); clearTimeout(later); };
+      const twice = ids.filter(v => visits[v] > 1);
+      const ham = !twice.length && tour.edges.length === ids.length;
+      say(msg, ham
+        ? `Euler cycle: ${shortWalk(tour.vertices)}. It passes through each of the ${ids.length} vertices exactly once, so it is also a Hamiltonian cycle. That takes exactly n = ${ids.length} edges, every vertex of degree 2: this graph is a cycle.`
+        : `Euler cycle: ${shortWalk(tour.vertices)}. It passes through ${twice.join(', ')} more than once (red), so it is not a Hamiltonian cycle. An Euler cycle uses all m = ${g.edges.length} edges, and a Hamiltonian cycle has exactly n = ${ids.length}.`, ham ? 'ok' : 'fail');
+    }));
+    load(keys[0]);
+  }
+
+  /* A7 (2004): can the drawn spanning tree come from DFS(s) or BFS(s)? */
+  function treeOrigin(host) {
+    const g = G['2004E7'], ids = idsOf(g);
+    host.innerHTML = `<div class="ex"><p class="ex-title">Try it: which trees can DFS(s) and BFS(s) build?</p>
+      <p class="ex-hint">Every order of the neighbor lists is tried (computed). The names D and E are added: the exam names only s, A, B and C.</p>
+      <div class="ex-controls" data-c></div>
+      <div class="ex-pair">
+        <div><p class="strip-name">The tree in the question</p><div class="ex-graph" data-mine></div></div>
+        <div><p class="strip-name" data-cand-name>A tree the algorithm can build</p><div class="ex-graph" data-cand></div></div>
+      </div>
+      <div class="ex-msg" aria-live="polite"></div></div>`;
+    const c = host.querySelector('[data-c]'), msg = host.querySelector('.ex-msg'), candName = host.querySelector('[data-cand-name]');
+    const mine = gvWeighted(host.querySelector('[data-mine]'), g);
+    g.tree.forEach(([a, b]) => mine.setEdgeState(`e${eIndex(g, a, b)}`, 'out'));
+    g.edges.forEach(([a, b], i) => { if (!g.tree.some(([x, y]) => (x === a && y === b) || (x === b && y === a))) mine.setEdgeState(`e${i}`, 'gone'); });
+    let cand = gvWeighted(host.querySelector('[data-cand]'), g), stop = () => {};
+    const show = tree => {
+      g.edges.forEach((_, i) => cand.setEdgeState(`e${i}`, 'gone'));
+      tree.forEach(([a, b]) => { const i = eIndex(g, a, b); cand.setEdgeState(`e${i}`, 'blocked'); drawIn(cand.edgeEl(`e${i}`)); });
+    };
+    const run = (name, trees, why) => {
+      stop();
+      const hit = trees.some(t => L.sameTree(t, g.tree));
+      const steps = trees.map((t, k) => () => { candName.textContent = `${name} tree ${k + 1} of ${trees.length}`; show(t); });
+      stop = seq(steps, 700);
+      say(msg, `${name} can build ${trees.length} different ${trees.length === 1 ? 'tree' : 'trees'} here, shown one after another. ${hit ? 'One of them is the drawn tree.' : 'None of them is the drawn tree.'} ${why(trees)}`, hit ? null : 'ok');
+    };
+    const depthMine = treeDepth(g.tree, 's');
+    c.append(makeBtn('Every BFS(s) tree', null, () => run('BFS(s)', L.allBfsTrees(ids, g.edges, 's'), trees => {
+      const dC = [...new Set(trees.map(t => treeDepth(t, 's').C))];
+      return `In every BFS tree C is at depth ${dC.join(', ')}, its distance from s (s – A – C). In the drawn tree C is at depth ${depthMine.C} (s – B – E – C).`;
+    })), makeBtn('Every DFS(s) tree', null, () => run('DFS(s)', L.allDfsTrees(ids, g.edges, 's'), trees => {
+      const kids = [...new Set(trees.map(t => t.filter(([a]) => a === 's').length))];
+      return `In every DFS tree s has ${kids.join(', ')} ${kids[0] === 1 ? 'child' : 'children'}: whichever of A and B DFS enters first, the other is reachable from it without passing through s (by the edge A – B, for one), so DFS marks it before it backs up to s. In the drawn tree s has two children, A and B.`;
+    })));
+    say(msg, 'The drawn tree is on top. Show every tree BFS(s) can build, then every tree DFS(s) can build.');
+  }
+
+  /* B3 (2004): Σ deg(v) = 2(n − 5) leaves too few edges for a connected graph */
+  function edgeBudget(host) {
+    host.innerHTML = exShell('Try it: a simple graph with Σ deg(v) = 2(n − 5)', 'Pick n and draw a random simple graph with n − 5 edges. Its connected components get colors (computed).');
+    const c = host.querySelector('[data-c]'), box = host.querySelector('.ex-graph'), msg = host.querySelector('.ex-msg');
+    const field = document.createElement('label');
+    field.className = 'algo-field';
+    field.innerHTML = 'n = <input type="range" min="6" max="16" value="9"> <b>9</b>';
+    const range = field.querySelector('input'), shown = field.querySelector('b');
+    let stop = () => {};
+    function draw() {
+      stop();
+      const n = +range.value, m = n - 5;
+      shown.textContent = n;
+      const ids = Array.from({ length: n }, (_, i) => String(i + 1));
+      const all = ids.flatMap((a, i) => ids.slice(i + 1).map(b => [a, b]));
+      const edges = [];
+      while (edges.length < m) edges.push(all.splice(Math.floor(Math.random() * all.length), 1)[0]);
+      const g = { title: `Random simple graph, n = ${n}, m = ${m}`, directed: false,
+        nodes: ids.map((v, i) => [v, 250 + 200 * Math.sin(2 * Math.PI * i / n), 145 - 112 * Math.cos(2 * Math.PI * i / n)]), edges };
+      const gv = gvWeighted(box, g, { r: 15 });
+      const comps = L.components(ids, edges, false);
+      const colors = ['g1', 'g2', 'g3', 'g4', 'c1', 'c2'];
+      let k = 0;
+      const steps = [
+        ...edges.map((_, i) => () => drawIn(gv.edgeEl(`e${i}`))),
+        ...comps.filter(cp => cp.length > 1).map(cp => { const col = colors[k++ % colors.length]; return () => cp.forEach(v => { gv.setNodeState(v, col); pop(gv.nodeEl(v)); }); }),
+      ];
+      stop = seq(steps, 160);
+      say(msg, `n = ${n}: Σ deg(v) = 2(n − 5) = ${2 * m} = 2m, so m = ${m}. A connected graph on ${n} vertices needs at least n − 1 = ${n - 1} edges, and there are only ${m}. This graph has ${comps.length} connected components (each edge joins at most two components into one, so at least n − m = 5 remain).`, 'ok');
+    }
+    range.addEventListener('input', draw);
+    c.append(field, makeBtn('Another random graph', null, draw));
+    draw();
+  }
+
+  /* B4 (2004): a binary De Bruijn sequence has as many 0s as 1s */
+  function deBruijnCount(host) {
+    host.innerHTML = `<div class="ex"><p class="ex-title">Try it: count the 0s and 1s of a De Bruijn sequence</p>
+      <div class="ex-controls" data-c></div><div class="seq-chips" data-seq></div><div class="ex-msg" aria-live="polite"></div></div>`;
+    const c = host.querySelector('[data-c]'), seqBox = host.querySelector('[data-seq]'), msg = host.querySelector('.ex-msg');
+    const ns = [2, 3, 4, 5];
+    let stop = () => {};
+    function load(k) {
+      stop();
+      const n = ns[k], s = L.deBruijnSequence(2, n), len = s.length;
+      const z = [...s].filter(x => x === '0').length, o = len - z;
+      const words = L.cyclicWindows(s, n);
+      seqBox.innerHTML = [...s].map((x, i) => `<span class="seq-chip db-${x}" title="starts the word ${words[i]}"><small>${i}</small>${x}</span>`).join('');
+      stop = seq([...seqBox.children].map(ch => () => pop(ch)), 45);
+      say(msg, `A De Bruijn sequence for n = ${n}, from an Euler cycle of G₂,${n} (computed${L.isDeBruijn(s, 2, n) ? ', and every word of length ' + n + ' appears exactly once' : ''}): ${len} letters, ${z} zeros and ${o} ones. Each letter is the first letter of exactly one of the ${len} words of length ${n}, and ${len / 2} of those words start with 0. Hover a letter to see its word.`, z === o ? 'ok' : 'fail');
+    }
+    c.append(segOf(ns.map(n => `n = ${n}`), load, 'Word length'));
+    load(0);
+  }
+
+  /* B6 (2004): spanning trees on {1,…,5} in which vertex 1 is a leaf */
+  function treeCount(host) {
+    const ids = ['1', '2', '3', '4', '5'];
+    const all = ids.flatMap((a, i) => ids.slice(i + 1).map(b => [a, b]));
+    const trees = L.spanningTrees(ids, all).map(t => t.map(k => all[k]));
+    const pos = Object.fromEntries(ids.map((v, i) => [v, [50 + 36 * Math.sin(2 * Math.PI * i / 5), 52 - 36 * Math.cos(2 * Math.PI * i / 5)]]));
+    const leaf1 = t => t.filter(e => e.includes('1')).length === 1;
+    const mini = t => `<svg viewBox="0 0 100 100" class="mini-tree" aria-hidden="true">${t.map(([a, b]) => `<line x1="${pos[a][0]}" y1="${pos[a][1]}" x2="${pos[b][0]}" y2="${pos[b][1]}"/>`).join('')}${ids.map(v => `<circle cx="${pos[v][0]}" cy="${pos[v][1]}" r="10" class="${v === '1' ? 'one' : ''}"/><text x="${pos[v][0]}" y="${pos[v][1] + 4}">${v}</text>`).join('')}</svg>`;
+    host.innerHTML = `<div class="ex"><p class="ex-title">Try it: the ${trees.length} spanning trees on {1, 2, 3, 4, 5}</p>
+      <p class="ex-hint">Every spanning tree of the complete graph on 5 vertices, computed. Under each tree is its word (Prüfer code, added: not taught in the course).</p>
+      <div class="ex-controls" data-c></div>
+      <div class="tree-grid">${trees.map(t => `<figure class="tree-cell${leaf1(t) ? ' leaf1' : ''}">${mini(t)}<figcaption>${L.pruferCode(ids, t)}</figcaption></figure>`).join('')}</div>
+      <div class="ex-msg" aria-live="polite"></div></div>`;
+    const c = host.querySelector('[data-c]'), grid = host.querySelector('.tree-grid'), msg = host.querySelector('.ex-msg');
+    let stop = () => {};
+    const k = trees.filter(leaf1).length;
+    c.append(segOf(['All trees', 'Vertex 1 is a leaf'], x => {
+      stop();
+      grid.classList.toggle('filtered', x === 1);
+      if (x === 1) {
+        const cells = [...grid.querySelectorAll('.leaf1')];
+        stop = seq(cells.slice(0, 40).map(cell => () => pop(cell)), 25);
+        const no1 = trees.filter(leaf1).every(t => !L.pruferCode(ids, t).includes('1'));
+        say(msg, `${k} of the ${trees.length} trees have vertex 1 as a leaf, and 4³ = ${4 ** 3}. ${no1 ? 'Their words never contain 1: they are exactly the words of length 3 over {2, 3, 4, 5}, a 4-letter alphabet, like Σ = {1, 2, 3, 4}.' : ''}`, k === 4 ** 3 ? 'ok' : 'fail');
+      } else say(msg, `All ${trees.length} = 5³ spanning trees, one per word of length 3 over {1, …, 5}. Filter the ones where vertex 1 is a leaf.`);
+    }, 'Which trees'));
+    say(msg, `All ${trees.length} = 5³ spanning trees, one per word of length 3 over {1, …, 5}. Filter the ones where vertex 1 is a leaf.`);
+  }
   const whichTreeEx1 = host => whichTree(host, 'ex1');
   const whichTreeEx7 = host => whichTree(host, 'ex7');
 
@@ -3044,5 +3332,6 @@ window.Exercises = (function () {
     minimalTree, buildSpanning, dfsByHand, identifyTrees, findRoots, countSpanning, whichTreeEx1, whichTreeEx7, childrenOfV, completeGraph, backEdges, cutVertex,
     bfsByHand, labelDistances, weightedPath, relaxTool, evenPaths,
     spByHand, shiftFix, bfOrder, spClaims,
-    bfTable, spEdgeCount, fwByHand, fwClaims, taxPath, fwWeights };
+    bfTable, spEdgeCount, fwByHand, fwClaims, taxPath, fwWeights,
+    graphFigure, dfsBfsLabels, eulerHam, treeOrigin, edgeBudget, deBruijnCount, treeCount };
 })();

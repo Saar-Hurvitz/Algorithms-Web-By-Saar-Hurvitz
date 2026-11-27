@@ -191,31 +191,31 @@ entry:w5-r-summary                    827fba6ee0  2026-11-25  Week 5, whole-week
 entry:w5-review                       1d9c27501a  2026-11-25  Week 5, whole-week review with the review pack
 entry:w5-shift-ex                     eff6da3567  2026-11-25  Week 5, whole-week review with the review pack
 entry:w5-sp-hand                      454d28ec6c  2026-11-25  Week 5, whole-week review with the review pack
-entry:w6-apsp                         8e4132540e  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-bf-review                    870eeaa947  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-bf-table                     b2c14c4363  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-copies                       9f193c6bb0  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-delta                        f30e6f3219  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-fw                           952f667903  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-fw-hand                      cf5887513e  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-fw-proof                     382c9ab526  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-gas                          073a96c790  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-neg-detect                   c37af634a6  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-neg-proof                    c3108ede29  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-pizza                        7ce471f639  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-bf                         ef7b74c6df  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-bf-run                     20b297a106  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-edges                      fd2b4a6d1b  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-ex1                        d91bf560da  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-ex2                        a02a25fdb9  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-ex3                        287827a39c  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-ex4                        44c28bd679  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-ex5                        7249a83b5d  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-r-fw                         5e099ca3b6  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-review                       90d8b51014  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-shift-recap                  bddc31dfde  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-summary                      28552ee78b  2026-11-25  Week 6, whole-week review with the review pack
-entry:w6-techniques                   bc6ccbef59  2026-11-25  Week 6, whole-week review with the review pack
+entry:w6-apsp                         8e4132540e  2026-11-27  Exam mid04, built and checked
+entry:w6-bf-review                    870eeaa947  2026-11-27  Exam mid04, built and checked
+entry:w6-bf-table                     b2c14c4363  2026-11-27  Exam mid04, built and checked
+entry:w6-copies                       9f193c6bb0  2026-11-27  Exam mid04, built and checked
+entry:w6-delta                        f30e6f3219  2026-11-27  Exam mid04, built and checked
+entry:w6-fw                           952f667903  2026-11-27  Exam mid04, built and checked
+entry:w6-fw-hand                      cf5887513e  2026-11-27  Exam mid04, built and checked
+entry:w6-fw-proof                     382c9ab526  2026-11-27  Exam mid04, built and checked
+entry:w6-gas                          073a96c790  2026-11-27  Exam mid04, built and checked
+entry:w6-neg-detect                   c37af634a6  2026-11-27  Exam mid04, built and checked
+entry:w6-neg-proof                    c3108ede29  2026-11-27  Exam mid04, built and checked
+entry:w6-pizza                        7ce471f639  2026-11-27  Exam mid04, built and checked
+entry:w6-r-bf                         ef7b74c6df  2026-11-27  Exam mid04, built and checked
+entry:w6-r-bf-run                     20b297a106  2026-11-27  Exam mid04, built and checked
+entry:w6-r-edges                      fd2b4a6d1b  2026-11-27  Exam mid04, built and checked
+entry:w6-r-ex1                        d91bf560da  2026-11-27  Exam mid04, built and checked
+entry:w6-r-ex2                        a02a25fdb9  2026-11-27  Exam mid04, built and checked
+entry:w6-r-ex3                        287827a39c  2026-11-27  Exam mid04, built and checked
+entry:w6-r-ex4                        44c28bd679  2026-11-27  Exam mid04, built and checked
+entry:w6-r-ex5                        7249a83b5d  2026-11-27  Exam mid04, built and checked
+entry:w6-r-fw                         5e099ca3b6  2026-11-27  Exam mid04, built and checked
+entry:w6-review                       90d8b51014  2026-11-27  Exam mid04, built and checked
+entry:w6-shift-recap                  bddc31dfde  2026-11-27  Exam mid04, built and checked
+entry:w6-summary                      28552ee78b  2026-11-27  Exam mid04, built and checked
+entry:w6-techniques                   bc6ccbef59  2026-11-27  Exam mid04, built and checked
 exercise:backEdges                    bfa43cd5af  2026-11-25  Week 3, whole-week review with the review pack
 exercise:bfOrder                      00f489300c  2026-11-25  Week 6, whole-week review with the review pack
 exercise:bfTable                      4b00962e55  2026-11-25  Week 6, whole-week review with the review pack
@@ -228,16 +228,21 @@ exercise:components                   723febf4ba  2026-11-24  Week 1, first revi
 exercise:countSpanning                25eea21738  2026-11-25  Week 3, whole-week review with the review pack
 exercise:cutVertex                    0c5ab87dc6  2026-11-25  Week 3, whole-week review with the review pack
 exercise:deBruijnBuild                77785d1a8c  2026-11-24  Week 2, reviewed with the review pack
+exercise:deBruijnCount                8b9fbc3ad3  2026-11-27  Exam mid04, content review with the review pack
 exercise:deBruijnTrace                c9dc52735d  2026-11-24  Week 2, reviewed with the review pack
+exercise:dfsBfsLabels                 48ed4ecc18  2026-11-27  Exam mid04, content review with the review pack
 exercise:dfsByHand                    bb740bd2fc  2026-11-25  Week 3, whole-week review with the review pack
+exercise:edgeBudget                   ba1caaddc8  2026-11-27  Exam mid04, content review with the review pack
 exercise:eulerClassify                dca00f2990  2026-11-24  Week 2, reviewed with the review pack
+exercise:eulerHam                     ff7622915d  2026-11-27  Exam mid04, content review with the review pack
 exercise:eulerOrHamilton              5a9bb1034f  2026-11-24  Week 2, reviewed with the review pack
 exercise:eulerTrace                   d189477834  2026-11-24  Week 2, reviewed with the review pack
 exercise:evenPaths                    d51bd16651  2026-11-25  Week 4, whole-week review with the review pack
 exercise:findRoots                    5091ec1e31  2026-11-25  Week 3, whole-week review with the review pack
 exercise:fwByHand                     49d4b5c031  2026-11-25  Week 6, whole-week review with the review pack
-exercise:fwClaims                     c1031b39a0  2026-11-25  Week 6, whole-week review with the review pack
+exercise:fwClaims                     ac9affb6cb  2026-11-27  Exam mid04, content review with the review pack
 exercise:fwWeights                    f37e105853  2026-11-25  Week 6, whole-week review with the review pack
+exercise:graphFigure                  2e4cf005ad  2026-11-27  Exam mid04, content review with the review pack
 exercise:handshake                    943e6673fe  2026-11-24  Week 1, first review with the review pack
 exercise:identifyTrees                aab3e6dd43  2026-11-25  Week 3, whole-week review with the review pack
 exercise:labelDistances               2cff131ab1  2026-11-25  Week 4, whole-week review with the review pack
@@ -247,13 +252,16 @@ exercise:relaxTool                    70d2e799b8  2026-11-25  Week 4, whole-week
 exercise:represent                    9c54f6c9b9  2026-11-24  Week 1, first review with the review pack
 exercise:shiftFix                     c820eef73e  2026-11-25  Week 5, whole-week review with the review pack
 exercise:spByHand                     fca2482aa7  2026-11-25  Week 5, whole-week review with the review pack
-exercise:spClaims                     2d24bdd7dc  2026-11-25  Week 6, whole-week review with the review pack
+exercise:spClaims                     6adaa75dd9  2026-11-27  Exam mid04, content review with the review pack
 exercise:spEdgeCount                  ec99dfbea9  2026-11-25  Week 6, whole-week review with the review pack
 exercise:taxPath                      15641c398f  2026-11-25  Week 6, whole-week review with the review pack
+exercise:treeCount                    04b537ba88  2026-11-27  Exam mid04, content review with the review pack
+exercise:treeOrigin                   1f82cd2f46  2026-11-27  Exam mid04, layout fix
 exercise:twoColor                     7503b20391  2026-11-24  Week 1, first review with the review pack
 exercise:weightedPath                 05c9fcd314  2026-11-25  Week 4, whole-week review with the review pack
 exercise:whichTreeEx1                 7f28bd3d13  2026-11-25  Week 3, whole-week review with the review pack
 exercise:whichTreeEx7                 df48f9db84  2026-11-25  Week 3, whole-week review with the review pack
+file:css/exam.css                     18a732eb6e  2026-11-27  Exam mid04, moved to past-exams/
 file:js/algorithms/anagram.js         d0e1095382  2026-11-24  Week 1, first review with the review pack
 file:js/algorithms/bfs.js             94680bc691  2026-11-25  Week 4, whole-week review with the review pack
 file:js/algorithms/dfs-directed.js    f2a4826e32  2026-11-25  Week 4, whole-week review with the review pack
@@ -263,15 +271,32 @@ file:js/algorithms/fw.js              880468d94d  2026-11-25  Week 6, whole-week
 file:js/algorithms/indegree.js        2d7f1ad26f  2026-11-24  Week 1, first review with the review pack
 file:js/algorithms/relax.js           6401b0a7e9  2026-11-25  Week 4, whole-week review with the review pack
 file:js/algorithms/source-removal.js  2d3360fbfa  2026-11-24  Week 1, first review with the review pack
-file:js/algorithms/sssp.js            c87908aa9d  2026-11-25  Week 6, whole-week review with the review pack
+file:js/algorithms/sssp.js            a1098c6b0b  2026-11-27  Exam mid04, content review with the review pack
 file:js/algorithms/toposort.js        3186987d04  2026-11-25  Week 1, first review with the review pack
 file:js/algorithms/tournament.js      bbcbd5fbcd  2026-11-24  Week 2, reviewed with the review pack
+file:js/exam.js                       d49099779d  2026-11-27  Exam mid04, moved to past-exams/
+file:js/render.js                     35d91147bd  2026-11-27  Exam mid04, content review with the review pack
+file:past-exams/mid04/index.html      11c9c24591  2026-11-27  Exam mid04, moved to past-exams/
+file:past-exams/mid04/mid04.js        d71d543713  2026-11-27  Exam mid04, moved to past-exams/
+file:tools/checks/exam-mid04.js       165bd9e9a0  2026-11-27  Exam mid04, moved to past-exams/
 file:tools/checks/week1.js            c9b5452b07  2026-11-24  Week 1, first review with the review pack
 file:tools/checks/week2.js            b8da784d93  2026-11-24  Week 2, reviewed with the review pack
 file:tools/checks/week3.js            6c645626c7  2026-11-25  Week 3, whole-week review with the review pack
 file:tools/checks/week4.js            e8c09e1a97  2026-11-25  Week 4, whole-week review with the review pack
 file:tools/checks/week5.js            4d7094a8b6  2026-11-25  Week 5, whole-week review with the review pack
 file:tools/checks/week6.js            f882ba4503  2026-11-25  Week 6, whole-week review with the review pack
+graph:2004E1a                         9229b80b55  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E1b                         289bd80137  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E2                          53a3800a03  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E3a                         5c2fee6751  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E3b                         4dec71324e  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E4                          868cb58eb2  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E5                          8860c4ec1e  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E6a                         54fb63fa60  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E6b                         7f1f94fabc  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E6c                         d78304f5b0  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E7                          2bc5bef09a  2026-11-27  Exam mid04, moved to past-exams/
+graph:2004E8                          1828b57614  2026-11-27  Exam mid04, moved to past-exams/
 graph:2L17                            b48f6d4958  2026-11-24  Week 2, reviewed with the review pack
 graph:2L17+                           88c897ecc1  2026-11-24  Week 2, reviewed with the review pack
 graph:2L18                            6c72cd475f  2026-11-24  Week 2, reviewed with the review pack
@@ -321,26 +346,26 @@ graph:5R11                            73a8fb6988  2026-11-25  Week 5, whole-week
 graph:5R15                            81d3820c6a  2026-11-25  Week 5, whole-week review with the review pack
 graph:5R15′                           543b088062  2026-11-25  Week 5, whole-week review with the review pack
 graph:5R9                             bdae4316e0  2026-11-25  Week 5, whole-week review with the review pack
-graph:6L10                            9f112088ef  2026-11-25  Week 6, whole-week review with the review pack
-graph:6L25                            207f9e471c  2026-11-25  Week 6, whole-week review with the review pack
-graph:6L25neg                         4d7fe49577  2026-11-25  Week 6, whole-week review with the review pack
-graph:6L40                            0d9e59cc10  2026-11-25  Week 6, whole-week review with the review pack
-graph:6L41                            d41062f3e5  2026-11-25  Week 6, whole-week review with the review pack
-graph:6L50                            c95e396914  2026-11-25  Week 6, whole-week review with the review pack
-graph:6L51                            93ed4dc6b8  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R17                            294ba2feba  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R22                            f47af8fced  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R24                            4759714175  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R28                            b291bf4587  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R30                            5593b4e2f0  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R36                            9b58b033ee  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R37                            d8b3d1312e  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R39                            8ac6391b19  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R46                            c308b7c9dd  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R48                            32883d9d24  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R49                            d153263aab  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R8                             8f20d2a584  2026-11-25  Week 6, whole-week review with the review pack
-graph:6R8neg                          3b386beea1  2026-11-25  Week 6, whole-week review with the review pack
+graph:6L10                            9f112088ef  2026-11-27  Exam mid04, built and checked
+graph:6L25                            207f9e471c  2026-11-27  Exam mid04, built and checked
+graph:6L25neg                         4d7fe49577  2026-11-27  Exam mid04, built and checked
+graph:6L40                            0d9e59cc10  2026-11-27  Exam mid04, built and checked
+graph:6L41                            d41062f3e5  2026-11-27  Exam mid04, built and checked
+graph:6L50                            c95e396914  2026-11-27  Exam mid04, built and checked
+graph:6L51                            93ed4dc6b8  2026-11-27  Exam mid04, built and checked
+graph:6R17                            294ba2feba  2026-11-27  Exam mid04, built and checked
+graph:6R22                            f47af8fced  2026-11-27  Exam mid04, built and checked
+graph:6R24                            4759714175  2026-11-27  Exam mid04, built and checked
+graph:6R28                            b291bf4587  2026-11-27  Exam mid04, built and checked
+graph:6R30                            5593b4e2f0  2026-11-27  Exam mid04, built and checked
+graph:6R36                            9b58b033ee  2026-11-27  Exam mid04, built and checked
+graph:6R37                            d8b3d1312e  2026-11-27  Exam mid04, built and checked
+graph:6R39                            8ac6391b19  2026-11-27  Exam mid04, built and checked
+graph:6R46                            c308b7c9dd  2026-11-27  Exam mid04, built and checked
+graph:6R48                            32883d9d24  2026-11-27  Exam mid04, built and checked
+graph:6R49                            d153263aab  2026-11-27  Exam mid04, built and checked
+graph:6R8                             8f20d2a584  2026-11-27  Exam mid04, built and checked
+graph:6R8neg                          3b386beea1  2026-11-27  Exam mid04, built and checked
 graph:L45                             5a070abd7e  2026-11-25  Week 1, first review with the review pack
 graph:L47                             aeed5f7c6a  2026-11-25  Week 1, first review with the review pack
 graph:L51                             b5d13acac5  2026-11-25  Week 1, first review with the review pack
@@ -352,7 +377,9 @@ graph:R19                             9130614201  2026-11-25  Week 1, first revi
 graph:R20                             eb1aad5862  2026-11-25  Week 1, first review with the review pack
 graph:R33                             caa050262e  2026-11-25  Week 1, first review with the review pack
 graph:R8                              db39c3631e  2026-11-25  Week 1, first review with the review pack
+logic:allBfsTrees                     4197a113bf  2026-11-27  Exam mid04, content review with the review pack
 logic:allDfsTrees                     194c1e9f90  2026-11-25  Week 3, whole-week review with the review pack
+logic:allListOrders                   702753844b  2026-11-27  Exam mid04, content review with the review pack
 logic:allShortestPaths                987c20c83e  2026-11-25  Week 5, whole-week review with the review pack
 logic:almostValidDistances            424890ff1c  2026-11-25  Week 5, whole-week review with the review pack
 logic:almostValidGraph                2fd393b8ac  2026-11-25  Week 5, whole-week review with the review pack
@@ -363,6 +390,7 @@ logic:bellmanFordTreeOrder            b92003ab0e  2026-11-25  Week 6, whole-week
 logic:bfsLayers                       3a92503f78  2026-11-25  Week 4, whole-week review with the review pack
 logic:dagShortestPaths                144f5a3a4b  2026-11-25  Week 5, whole-week review with the review pack
 logic:deBruijnGraph                   4ff78c8070  2026-11-24  Week 2, reviewed with the review pack
+logic:deBruijnSequence                3ec3621396  2026-11-27  Exam mid04, content review with the review pack
 logic:dfsForest                       f7602d13d7  2026-11-25  Week 4, whole-week review with the review pack
 logic:dfsRun                          f877d899a0  2026-11-25  Week 3, whole-week review with the review pack
 logic:dfsTreesCompatible              1b0cda78f0  2026-11-25  Week 3, whole-week review with the review pack
@@ -378,11 +406,14 @@ logic:gasStationsGraph                3d51401efd  2026-11-25  Week 6, whole-week
 logic:hamiltonianCycle                7878435e51  2026-11-24  Week 2, reviewed with the review pack
 logic:hamiltonianPath                 b5b5e69011  2026-11-24  Week 2, reviewed with the review pack
 logic:isDeBruijn                      5adb2ab8e7  2026-11-24  Week 2, reviewed with the review pack
+logic:leafGap                         ce549f0e44  2026-11-27  Exam mid04, content review with the review pack
 logic:oneNegativeEdge                 dbea43ccd9  2026-11-25  Week 5, whole-week review with the review pack
 logic:pathByPi                        5e8df5dade  2026-11-25  Week 4, whole-week review with the review pack
 logic:pizzaDistances                  6ddca2070f  2026-11-25  Week 6, whole-week review with the review pack
 logic:pizzaGraph                      e8e2222d7a  2026-11-25  Week 6, whole-week review with the review pack
+logic:pruferCode                      8357b48950  2026-11-27  Exam mid04, content review with the review pack
 logic:rootsOf                         55ae7c9233  2026-11-25  Week 3, whole-week review with the review pack
+logic:sameTree                        c464071432  2026-11-27  Exam mid04, content review with the review pack
 logic:shiftWeights                    bc260dc0b2  2026-11-25  Week 5, whole-week review with the review pack
 logic:shortestPaths                   ca5bda779d  2026-11-25  Week 4, whole-week review with the review pack
 logic:spanningTrees                   795aac0a49  2026-11-25  Week 3, whole-week review with the review pack
@@ -400,7 +431,7 @@ term:adjacent                         362144c75b  2026-11-25  Week 1, first revi
 term:almost-valid                     40183329eb  2026-11-25  Week 5, whole-week review with the review pack
 term:anagram-class                    ca0995f4a5  2026-11-25  Week 1, first review with the review pack
 term:anti-parallel                    423964226e  2026-11-25  Week 4, whole-week review with the review pack
-term:apsp                             c32fc64cbd  2026-11-25  Week 6, whole-week review with the review pack
+term:apsp                             c32fc64cbd  2026-11-27  Exam mid04, built and checked
 term:back-edge                        2658eee306  2026-11-25  Week 3, whole-week review with the review pack
 term:bellman-ford                     0c3f0b0770  2026-11-25  Week 5, whole-week review with the review pack
 term:bfs                              481e816ad9  2026-11-25  Week 4, whole-week review with the review pack
@@ -414,13 +445,13 @@ term:connected                        4ed0e6ef15  2026-11-25  Week 1, first revi
 term:connected-component              2d32e5d965  2026-11-25  Week 1, first review with the review pack
 term:cycle                            41e8ac1144  2026-11-25  Week 1, first review with the review pack
 term:cycle-graph                      1049aef069  2026-11-25  Week 1, first review with the review pack
-term:d-u                              17981c0481  2026-11-25  Week 6, whole-week review with the review pack
+term:d-u                              17981c0481  2026-11-27  Exam mid04, built and checked
 term:dag                              a45aa1cacd  2026-11-25  Week 1, first review with the review pack
 term:dag-sp                           d0f9ab32ac  2026-11-25  Week 5, whole-week review with the review pack
 term:de-bruijn-graph                  855abee4ea  2026-11-24  Week 2, reviewed with the review pack
 term:de-bruijn-sequence               3750ba073e  2026-11-24  Week 2, reviewed with the review pack
 term:degree                           70d6f10154  2026-11-25  Week 1, first review with the review pack
-term:delta-k                          622e939713  2026-11-25  Week 6, whole-week review with the review pack
+term:delta-k                          622e939713  2026-11-27  Exam mid04, built and checked
 term:dense-graph                      24df2c7dc2  2026-11-25  Week 3, whole-week review with the review pack
 term:dfs                              aafc3a93cb  2026-11-25  Week 3, whole-week review with the review pack
 term:dfs-forest                       f2b5ae8af6  2026-11-25  Week 4, whole-week review with the review pack
@@ -434,9 +465,9 @@ term:euler-cycle                      b7c4b6cdd7  2026-11-24  Week 2, reviewed w
 term:euler-path                       08393aa2a3  2026-11-24  Week 2, reviewed with the review pack
 term:exhaustive-search                95a081ae3b  2026-11-24  Week 2, reviewed with the review pack
 term:fibonacci-heap                   31b6df0ba0  2026-11-25  Week 5, whole-week review with the review pack
-term:floyd-warshall                   94eadab24c  2026-11-25  Week 6, whole-week review with the review pack
+term:floyd-warshall                   94eadab24c  2026-11-27  Exam mid04, built and checked
 term:graph                            c531cc529f  2026-11-25  Week 1, first review with the review pack
-term:graph-replication                1b609a15e0  2026-11-25  Week 6, whole-week review with the review pack
+term:graph-replication                1b609a15e0  2026-11-27  Exam mid04, built and checked
 term:hamiltonian-cycle                5f6751df98  2026-11-24  Week 2, reviewed with the review pack
 term:hamiltonian-path                 eb3b445381  2026-11-24  Week 2, reviewed with the review pack
 term:handshaking                      02bd962419  2026-11-25  Week 1, first review with the review pack
@@ -446,7 +477,7 @@ term:initial-vertex                   fde1f3e44e  2026-11-25  Week 1, first revi
 term:invariant                        dc4084d2e1  2026-11-25  Week 3, whole-week review with the review pack
 term:label                            3428408716  2026-11-25  Week 1, first review with the review pack
 term:leaf                             eee0127d7c  2026-11-25  Week 3, whole-week review with the review pack
-term:nc-detection                     6d2b7103d7  2026-11-25  Week 6, whole-week review with the review pack
+term:nc-detection                     6d2b7103d7  2026-11-27  Exam mid04, built and checked
 term:negative-cycle                   9681b789c3  2026-11-25  Week 5, whole-week review with the review pack
 term:out-degree                       0a1faacd37  2026-11-25  Week 1, first review with the review pack
 term:parallel-edges                   cae7a6bad5  2026-11-25  Week 1, first review with the review pack
@@ -480,7 +511,7 @@ term:star                             ab884a2c40  2026-11-25  Week 1, first revi
 term:start-vertex                     1eadb94766  2026-11-24  Week 2, reviewed with the review pack
 term:strongly-connected               589d3df666  2026-11-25  Week 1, first review with the review pack
 term:sweep                            c723085f25  2026-11-25  Week 5, whole-week review with the review pack
-term:taxed-cost                       eb2de46b5e  2026-11-25  Week 6, whole-week review with the review pack
+term:taxed-cost                       eb2de46b5e  2026-11-27  Exam mid04, built and checked
 term:terminal-vertex                  3dbf10d63f  2026-11-25  Week 1, first review with the review pack
 term:topo-sort                        86c3dc4bb7  2026-11-25  Week 1, first review with the review pack
 term:tournament-graph                 f4509b2954  2026-11-24  Week 2, reviewed with the review pack
@@ -544,7 +575,45 @@ Decided in a review, with the reason. A reviewer should not raise these again.
 - **The 5L48 run is computed, not on the slide.** It is tagged as added; the values are A = 2, B = 3, C = −4, with updates in sweeps 1, 2 and 3.
 - **Slide errors are shown unchanged, with a ⚠️ note:** the missing weight 1 on 5L16–17; the duplicate "a" and the sign of Δ·k on 5L45; "updated to be" on 5L19 and 5L51; "to v" for "to vᵢ" on 5L51; "positive" and the single complexity on 5R13; the missing no-negative-cycle assumption on 5R20–21; "every vertex reachable from s" on 5L39.
 
+### Exam mid04 (past-exams/mid04/, Exams/MidTermExams/mid04sol.pdf)
+- **The stems, options and official solutions are copied word for word**, including the garbled "שצמתיו" of B2's solution and A6's confused explanation. Problems get a ⚠️ callout beside them, never an edit.
+- **⚠️ A3:** only edges into v lower v.d, so the conclusion is about v's in-degree.
+- **⚠️ A6:** the official explanation mentions an Euler path and holds only for connected graphs; the clean argument is given and tagged.
+- **⚠️ B1:** the solution's 4-cycle is a counterexample only if the two runs order S's neighbors differently (computed: with the same lists there is none). This is why 6R47 adds "the same data structure".
+- **⚠️ B6:** the tree↔word (Prüfer) correspondence is not taught in weeks 1–6; the widget counts the trees directly.
+- **Added names and examples, all tagged:** D and E in A7's drawing; S, a, b, c on B1's 4-cycle; the example graphs of A1, A2's adjacency lists, A3, A5 and A6; A: C, B as the adjacency list of A in A4.
+- **Mixed Hebrew/Latin runs follow the PDF image, not pdftotext**, which reverses them ("B,A", "(v,u)").
+- **The widgets' text is in English** (like the rest of the site); the questions, options and solutions are in Hebrew, the exam's language. The user chose a Hebrew page.
+
 ## Reviews
+
+### 2026-11-27: Exam mid04, layout fix (reported by the user)
+- **Scope:** the solutions' visualizations were pushed out of view: in the right-to-left page each entry kept the reading width, so the wide animations overflowed it.
+- **Fix:** exam entries widen like the weekly `.entry.has-algo`: the Hebrew text keeps its reading width on the right, and `.exam-viz` (left to right) uses the full width. A7's two graphs now sit side by side.
+- **Checked:** no visualization extends past its entry; VisualCheck.run('X'): 11 runs ok, 390px light and dark, no clipping; console clean; check-answers passes.
+
+### 2026-11-27: Exam mid04, content review with the review pack, and visual review
+- **Scope:** all 13 questions of past-exams/mid04/ against the 4 pages of Exams/MidTermExams/mid04sol.pdf, with the pack `node tools/review-pack.js exam mid04` (new exam mode); Reviewer P (prose) and Reviewer C (code), then consultation on the one false finding. Visual review: VisualCheck.run('X') with every solution open, the graph sheet against the exam's drawings, term hover cards, search, the page viewer.
+- **Checked and found correct:** every answer key against the underlined option (both reviewers, from the images); every stem, option and blue solution word for word (formatting only otherwise); all four ⚠️ callouts; every added example graph satisfies its premise; 2004E4 and 2004E7 edge for edge; every check in tools/checks/exam-mid04.js tests what it names; every widget message, the p.watch counter and the new logic comments; 11 animation runs, 390px light and dark, no clipping, clean console; 29 term links with hover cards, search, 4 page images and the viewer.
+- **Not testable from the page:** smooth motion.
+
+| # | Kind | Finding | Decision |
+|---|---|---|---|
+| C1 | false | A7 explanation and treeOrigin: "DFS reaches the other through the edge A–B" (it can go through C) | Agreed by P; now "reachable from it without passing through s (e.g. by A–B)" |
+| P1 | minor | A7 official text had "A,B"; the PDF shows "B,A" (pdftotext reverses the run) | Restored "B,A" |
+| P2 | missing | The score table (56 / 48 / 104) and "בהצלחה!" were not on the page | Added to the page header |
+| V1 | visual | The page viewer's caption said "slide 3 of 4" | Deck fields `unit`/`of` give "עמוד 3 מתוך 4" |
+
+### 2026-11-27: Exam mid04, built and checked
+- **Scope:** the new page past-exams/mid04/ (13 questions), js/exam.js, css/exam.css, the exam graphs and widgets in js/exercises.js (graphFigure, dfsBfsLabels, eulerHam, treeOrigin, edgeBudget, deBruijnCount, treeCount; fwClaims data-set; spClaims claim 2004E8), the logic in js/graph-logic.js (allListOrders, allBfsTrees, sameTree, leafGap, pruferCode, deBruijnSequence), sssp.js (p.watch counter, ssspPreset), render.js (deck `unit`, stripTitle, addedText).
+- **Checked and found correct:** every stem, option, underlined answer and blue solution against the 160 dpi images of the 4 pages; tools/checks/exam-mid04.js (42 checks: every answer key against what its visualization computes) and all weeks' checks pass; make-inventory clean; VisualCheck.run('X') with every solution open: 11 animation runs end ok, back/forward the same, 390px light and dark, no clipping; the console clean on the exam, main and midterm pages; a right and a wrong answer on A1 and B1; every widget's actions and sentences; fwClaims and spClaims on the weekly page unchanged; the exam presets do not appear on the weekly pages.
+- **Not testable from the page:** smooth motion.
+
+| # | Kind | Finding | Decision |
+|---|---|---|---|
+| X1 | code | Floyd-Warshall numbers vertices by list position; 2004E5 listed 7 first, so δ⁵ was not "through {1..5}" | Nodes listed 1..8; the check now tests the order |
+| X2 | layout | A7's graph and tree were mirrored by the RTL grid | The figure row is left to right, as in the exam |
+| X3 | layout | Titles starting with English garbled in the RTL contents list | Titles start in Hebrew |
 
 ### 2026-11-25: Week 2, playground button fix
 - **Scope:** reported by the user: the "Add the edge (a,b)" button of w2-path-from-cycle (entry 61) did nothing.

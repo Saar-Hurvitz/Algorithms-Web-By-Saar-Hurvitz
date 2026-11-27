@@ -32,7 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   // pdftoppm pads file numbers to the number of digits in the page count
   const slideSrc = s => `${s.info.path}${String(s.n).padStart(String(s.info.count).length, '0')}.png`;
-  const slideName = s => `${s.info.name}, slide ${s.n}`;
+  /* A deck may name its pages another way (an exam deck: unit 'עמוד'); slides by default */
+  const unit = s => s.info.unit || 'slide';
+  const slideName = s => `${s.info.name}, ${unit(s)} ${s.n}`;
 
   /* ---------- Shorthand → HTML ---------- */
   const transform = html => html
@@ -42,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     .replace(/!!([^!]+)!!/g, '<strong class="crucial">$1</strong>')
     .replace(/\{\{(\d*[A-Z]\d+)\}\}/g, (m, ref) => {
       const s = parseSlide(ref);
-      return `<button type="button" class="slide-link" data-slide="${ref}" title="${s.info.name}">${s.info.kind} slide ${s.n}</button>`;
+      return `<button type="button" class="slide-link" data-slide="${ref}" title="${s.info.name}">${s.info.kind} ${unit(s)} ${s.n}</button>`;
     })
-    .replace(/\{\{added\}\}/g, '<span class="added-tag" title="An explanation added for this site. The slides do not state this.">not on the slides</span>');
+    .replace(/\{\{added\}\}/g, `<span class="added-tag" title="${C.addedTitle || 'An explanation added for this site. The slides do not state this.'}">${C.addedText || 'not on the slides'}</span>`);
 
   /* ---------- Table of contents ---------- */
   const tocList = $('#toc-list');
@@ -99,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const chips = [];
       for (const deck of Object.keys(C.decks)) {
         const nums = slides.filter(s => s.deck === deck).map(s => s.n);
-        if (nums.length) chips.push(`<span class="meta-chip">${C.decks[deck].kind} ${nums.length > 1 ? 'slides' : 'slide'} ${nums.join(', ')}</span>`);
+        if (nums.length) chips.push(`<span class="meta-chip">${C.decks[deck].kind} ${C.decks[deck].unit || (nums.length > 1 ? 'slides' : 'slide')} ${nums.join(', ')}</span>`);
       }
       for (const c of e.checklist || []) chips.push(`<span class="meta-chip checklist" title="${C.checklist[c].replace(/"/g, '&quot;')}">On the week ${e.week} checklist</span>`);
 
@@ -108,11 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="entry-meta">${chips.join('')}</div>
         <div class="entry-body">${transform(e.html)}</div>
         <div class="slides">
-          <p class="slides-title">From the slides</p>
+          <p class="slides-title">${C.stripTitle || 'From the slides'}</p>
           <div class="slide-strip">${slides.map(s => `
             <button type="button" class="slide-thumb ${s.info.wide ? 'wide' : ''}" data-slide="${s.ref}">
               <img src="${slideSrc(s)}" alt="${slideName(s)}" loading="lazy">
-              <span><b>${s.info.name}</b>, slide ${s.n}</span>
+              <span><b>${s.info.name}</b>, ${unit(s)} ${s.n}</span>
             </button>`).join('')}
           </div>
         </div>`;
@@ -481,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
     current = s;
     viewerImg.src = slideSrc(s);
     viewerImg.alt = slideName(s);
-    viewerCap.textContent = `${s.info.name}, slide ${s.n} of ${s.info.count}`;
+    viewerCap.textContent = `${s.info.name}, ${unit(s)} ${s.n} ${s.info.of || "of"} ${s.info.count}`;
     prevBtn.disabled = s.n <= 1;
     nextBtn.disabled = s.n >= s.info.count;
   };

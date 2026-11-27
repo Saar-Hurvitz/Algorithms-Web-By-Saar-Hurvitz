@@ -20,18 +20,22 @@ const fs = require('fs'), path = require('path'), { execFileSync } = require('ch
 const d = path.resolve(__dirname, '..');
 
 const args = process.argv.slice(2);
-const N = args[0];
-if (!N || !/^\d+$/.test(N)) { console.error('Usage: node tools/review-pack.js <week> [--entries id1,id2] [--out dir]'); process.exit(1); }
+/* A past exam: node tools/review-pack.js exam <id>. Its "slides" are the exam's pages, and its
+   entries are the questions as past-exams/<id>/<id>.js and js/exam.js build them. */
+const EXAM_ID = args[0] === 'exam' ? args[1] : null;
+const N = EXAM_ID ? 'X' : args[0];
+if (!N || (!EXAM_ID && !/^\d+$/.test(N))) { console.error('Usage: node tools/review-pack.js <week> | exam <id> [--entries id1,id2] [--out dir]'); process.exit(1); }
 const opt = k => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : null; };
 const only = opt('--entries') ? opt('--entries').split(',').map(s => s.trim()) : null;
-const out = path.resolve(d, opt('--out') || `.review-pack/week${N}`);
+const out = path.resolve(d, opt('--out') || (EXAM_ID ? `.review-pack/exam-${EXAM_ID}` : `.review-pack/week${N}`));
 
 /* Load the course as the page does */
 global.E = {};
 global.GraphView = { autoBend: e => e, create: () => ({}) };
 global.Algorithms = {};
 const scripts = [...fs.readFileSync(d + '/index.html', 'utf8').matchAll(/<script src="(js\/[^"]+)"/g)].map(m => m[1]);
-for (const f of scripts) if (/^js\/(course\.js|weeks\/|graph-logic\.js|exercises\.js)/.test(f)) require(d + '/' + f);
+for (const f of scripts) if (/^js\/(course\.js|weeks\/|graph-logic\.js|exercises\.js|algorithms\/)/.test(f)) require(d + '/' + f);
+if (EXAM_ID) { require(`${d}/past-exams/${EXAM_ID}/${EXAM_ID}.js`); require(d + '/js/exam.js'); }
 const C = COURSE, week = C.weeks.find(w => String(w.n) === N);
 if (!week) { console.error(`No week ${N} on the site`); process.exit(1); }
 C.parts.flatMap(p => p.entries).forEach((e, i) => { e.num = i + 1; });
@@ -41,12 +45,14 @@ if (only && entries.length !== only.length) console.warn('Unknown entry ids:', o
 
 /* ---------- Slides: text per page, from the week's PDFs ---------- */
 const run = (cmd, a) => execFileSync(cmd, a, { encoding: 'utf8', maxBuffer: 1 << 26 });
-const pdfs = fs.readdirSync(`${d}/weeks/week${N}`).filter(f => /\.pdf$/i.test(f)).map(f => {
-  const file = `${d}/weeks/week${N}/${f}`;
+const pdfDir = EXAM_ID ? path.dirname(`${d}/${EXAM.pdf}`) : `${d}/weeks/week${N}`;
+const pdfs = fs.readdirSync(pdfDir).filter(f => /\.pdf$/i.test(f) && (!EXAM_ID || f === path.basename(EXAM.pdf))).map(f => {
+  const file = `${pdfDir}/${f}`;
   return { f, file, pages: +(run('pdfinfo', [file]).match(/Pages:\s+(\d+)/) || [])[1] };
 });
 const deckPdf = {};
-for (const [key, deck] of Object.entries(week.decks)) {
+const decksInScope = EXAM_ID ? { [EXAM.deck]: EXAM.deckInfo } : week.decks;
+for (const [key, deck] of Object.entries(decksInScope)) {
   const same = pdfs.filter(p => p.pages === deck.count);
   deckPdf[key] = same.find(p => p.f.toLowerCase().includes(deck.kind.toLowerCase())) || same[0];
   if (!deckPdf[key]) console.warn(`No PDF with ${deck.count} pages for deck ${key}`);
@@ -54,7 +60,7 @@ for (const [key, deck] of Object.entries(week.decks)) {
 const refRe = /\{\{(\d*[A-Z])(\d+)\}\}/g;
 const slideText = {}, look = {};
 const MATH = /[∑≤≥→←∞δΔ∈∉⊆∪∩πλσ√≠×·⇒⇔]|[-�]/;
-for (const [key, deck] of Object.entries(week.decks)) {
+for (const [key, deck] of Object.entries(decksInScope)) {
   const pdf = deckPdf[key];
   if (!pdf) continue;
   const imgPages = new Set();
@@ -67,6 +73,7 @@ for (const [key, deck] of Object.entries(week.decks)) {
     if (t.split('\n').filter(l => l.trim().split(/\s+/).every(w => w.length <= 3)).length >= 5) why.push('drawing or table');
     if (MATH.test(t)) why.push('math symbols');
     if (t.replace(/\s/g, '').length < 15) why.push('almost no text');
+    if (EXAM_ID) why.push('Hebrew: extraction reverses parentheses and mixed-direction text, and loses the blue color and underlines');
     if (why.length) look[`${key}${i}`] = why.join(', ');
   }
 }
@@ -75,6 +82,7 @@ for (const [key, deck] of Object.entries(week.decks)) {
 const nums = s => (s.replace(/\{\{[^}]*\}\}/g, ' ').replace(/\b(Lecture|Recitation|Week|week|slide|slides|Exercise|Claim|step|Step|Lemma|Remark|remark)\s+\d+(\.\d+)?/g, ' ').replace(/^\s*\d+\.\s/, ' ').match(/(?<![A-Za-z_^{\d.])\d+(?:\.\d+)?(?![A-Za-z\d])/g) || []);
 function render(html) {
   let h = html
+    .replace(/data-lazy-(ex|algo)=/g, 'data-$1=')
     .replace(/<div class="algo-mount"([^>]*)><\/div>/g, (_, a) => `<p>[ANIMATION${a.replace(/data-/g, ' ').replace(/"/g, '')}]</p>`)
     .replace(/<div class="ex-mount"([^>]*)><\/div>/g, (_, a) => `<p>[EXERCISE${a.replace(/data-/g, ' ').replace(/"/g, '')}]</p>`)
     .replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[([^\]]+)\]\]/g, (_, id) => id.replace(/-/g, ' '))
@@ -82,7 +90,7 @@ function render(html) {
   /* Walk the tags: text goes to the innermost block; boxes, callouts and proofs give context */
   const blocks = [], stack = [];
   let buf = '', bufRefs = null;
-  const BLOCK = /^(p|li|summary|tr|pre|h\d|figcaption)$/;
+  const BLOCK = EXAM_ID ? /^(p|li|summary|tr|pre|h\d|figcaption|button)$/ : /^(p|li|summary|tr|pre|h\d|figcaption)$/;
   const ctx = () => stack.filter(s => s.ctx).map(s => s.ctx);
   const flush = kind => {
     const text = buf.replace(/\s+/g, kind === 'pre' ? ' ' : ' ').trim();
@@ -179,7 +187,7 @@ entries.forEach(e => {
 /* ---------- Write ---------- */
 fs.mkdirSync(out, { recursive: true });
 const inScope = Object.keys(slideText).filter(r => !only || cited.has(r));
-fs.writeFileSync(`${out}/slides.md`, `# Week ${N} slides: text by page\nLOOK = open the PNG (assets/slides/week${N}/…) before saying what the slide shows.\n` +
+fs.writeFileSync(`${out}/slides.md`, `# Week ${N} slides: text by page\nLOOK = open the PNG (${EXAM_ID ? `assets/exams/${EXAM_ID}/` : `assets/slides/week${N}/`}…) before saying what the slide shows.\n` +
   inScope.map(r => `\n## ${r}${look[r] ? `   LOOK: ${look[r]}` : ''}\n${slideText[r] || '(no text)'}`).join('\n') + '\n');
 fs.writeFileSync(`${out}/entries.md`, `# Week ${N} entries as sentences\nEach line: <entry>.<n> [source] text. [cites X] = the sentence cites X; [inherits X] = its paragraph or box cites X;\n[entry] = only the entry's slide strip (its \`slides\` list) covers it; [added] / [added, by its paragraph] = tagged {{added}}; [NO SOURCE] = none of these. NUM? = numbers found in none of those slides' text.\n` + lines.join('\n') + '\n');
 

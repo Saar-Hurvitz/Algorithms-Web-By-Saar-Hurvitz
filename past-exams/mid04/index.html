@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>בוחן אמצע סמסטר 2004, עם פתרונות</title>
+  <meta name="description" content="בוחן אמצע הסמסטר מ-1.12.2004 עם הפתרון הרשמי, ולכל שאלה הדמיה שמחשבת את התשובה.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/exam.css">
+</head>
+<body class="exam-page">
+  <a class="skip-link" href="#content">דילוג לתוכן</a>
+
+  <header class="topbar">
+    <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="toc">תוכן</button>
+    <span class="topbar-title">בוחן אמצע סמסטר 2004</span>
+  </header>
+
+  <div class="layout">
+    <nav id="toc" class="toc" aria-label="תוכן">
+      <div class="toc-head">
+        <p class="toc-week">בוחן אמצע סמסטר 2004</p>
+        <p class="toc-back"><a href="../index.html">→ כל המבחנים</a></p>
+        <p class="toc-back"><a href="../../index.html">→ הקורס המלא, שבוע אחר שבוע</a></p>
+        <p class="toc-back"><a href="../../midterm/index.html">→ דף ההכנה לבוחן</a></p>
+      </div>
+      <div class="toc-search" role="search" dir="ltr">
+        <input id="site-search" type="search" placeholder="Search what was taught" aria-label="Search what was taught"
+          role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-results"
+          autocomplete="off" autocapitalize="off" spellcheck="false">
+      </div>
+      <div id="search-panel" class="search-panel" hidden dir="ltr">
+        <div id="search-results" role="listbox" aria-label="Suggestions"></div>
+        <p id="search-status" class="search-status" role="status"></p>
+      </div>
+      <div id="toc-list"></div>
+      <div class="toc-foot">
+        <label class="theme-pick">ערכת צבעים
+          <select id="theme-select">
+            <option value="auto">לפי המערכת</option>
+            <option value="light">בהירה</option>
+            <option value="dark">כהה</option>
+          </select>
+        </label>
+      </div>
+    </nav>
+
+    <main id="content" class="content" tabindex="-1">
+      <section class="intro">
+        <h1>בוחן אמצע סמסטר, 1.12.2004</h1>
+        <p class="lede">אלגוריתמים – בוחן אמצע סמסטר. ד"ר תמי תמיר, 1.12.2004. משך המבחן: שעתיים. מותר כל חומר עזר כתוב. בהצלחה!</p>
+        <table class="model exam-score">
+          <thead><tr><th>חלק</th><th>ניקוד</th></tr></thead>
+          <tbody><tr><td>א</td><td>56</td></tr><tr><td>ב</td><td>48</td></tr><tr><td>ס"ה</td><td>104</td></tr></tbody>
+        </table>
+        <p>חלק א': 7 שאלות בחירה. חלק ב': 6 טענות נכון / לא נכון. הקובץ המקורי: <code>Exams/MidTermExams/mid04sol.pdf</code>.</p>
+
+        <aside class="callout intuition">
+          <span class="callout-title">איך משתמשים בדף</span>
+          <p>בחרו תשובה, וקבלו מיד משוב: נכון או לא. אפשר גם ללחוץ על "הצגת הפתרון" בלי לענות. הפתרון כולל את הנימוק הרשמי (הכחול בקובץ), מילה במילה, ואחריו הדמיה שמחשבת את התשובה על גרף, וקישורים לחומר בדפים השבועיים. ההדמיות באנגלית, כמו שאר האתר.</p>
+        </aside>
+
+        <div class="legend" aria-label="מקרא">
+          <p class="legend-title">מקרא</p>
+          <ul>
+            <li><span class="legend-swatch"><mark class="hl">רעיון מרכזי</mark></span> <span>סימון בטוש: המשפט שכדאי לזכור.</span></li>
+            <li><span class="legend-swatch"><a class="term-ref" href="#" data-term="graph">graph</a></span> <span>קו מנוקד: מושג מהקורס. ריחוף מראה את ההגדרה (באנגלית), ולחיצה עוברת אליה בדף השבועי.</span></li>
+            <li><span class="legend-swatch"><span class="added-tag">לא בפתרון הרשמי</span></span> <span>הסבר שנוסף לאתר. כל השאר לקוח מהמבחן ומהפתרון הרשמי.</span></li>
+            <li><span class="legend-swatch">⚠️</span> <span>הערה על בעיה בפתרון הרשמי. הפתרון עצמו מובא כפי שהוא.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <div id="entries"></div>
+    </main>
+  </div>
+
+  <div id="term-tip" class="term-tip" role="tooltip" hidden dir="ltr"></div>
+  <button id="back-jump" class="back-jump" type="button" hidden>↩ חזרה למקום הקודם</button>
+
+  <dialog id="slide-viewer" class="slide-viewer" aria-label="Slide viewer">
+    <div class="viewer-bar">
+      <span id="viewer-caption"></span>
+      <div class="viewer-actions">
+        <button type="button" id="viewer-prev" aria-label="Previous slide">‹</button>
+        <button type="button" id="viewer-next" aria-label="Next slide">›</button>
+        <button type="button" id="viewer-close" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <img id="viewer-img" alt="">
+  </dialog>
+
+  <script src="../../js/graph-view.js"></script>
+  <script src="../../js/graph-logic.js"></script>
+  <script src="../../js/exercises.js"></script>
+  <script src="../../js/figures.js"></script>
+  <script src="../../js/player.js"></script>
+  <script src="../../js/algo-view.js"></script>
+  <script src="../../js/algorithms/indegree.js"></script>
+  <script src="../../js/algorithms/toposort.js"></script>
+  <script src="../../js/algorithms/source-removal.js"></script>
+  <script src="../../js/algorithms/anagram.js"></script>
+  <script src="../../js/algorithms/euler.js"></script>
+  <script src="../../js/algorithms/tournament.js"></script>
+  <script src="../../js/algorithms/dfs.js"></script>
+  <script src="../../js/algorithms/bfs.js"></script>
+  <script src="../../js/algorithms/dfs-directed.js"></script>
+  <script src="../../js/algorithms/relax.js"></script>
+  <script src="../../js/algorithms/sssp.js"></script>
+  <script src="../../js/algorithms/fw.js"></script>
+  <script src="../../js/anagram-view.js"></script>
+  <script src="../../js/euler-view.js"></script>
+  <script src="../../js/tournament-view.js"></script>
+  <script src="../../js/course.js"></script>
+  <script src="../../js/weeks/week1/terms.js"></script>
+  <script src="../../js/weeks/week1/part-a.js"></script>
+  <script src="../../js/weeks/week1/part-b.js"></script>
+  <script src="../../js/weeks/week1/week.js"></script>
+  <script src="../../js/weeks/week2/terms.js"></script>
+  <script src="../../js/weeks/week2/part-a.js"></script>
+  <script src="../../js/weeks/week2/part-b.js"></script>
+  <script src="../../js/weeks/week2/week.js"></script>
+  <script src="../../js/weeks/week3/terms.js"></script>
+  <script src="../../js/weeks/week3/part-a.js"></script>
+  <script src="../../js/weeks/week3/part-b.js"></script>
+  <script src="../../js/weeks/week3/week.js"></script>
+  <script src="../../js/weeks/week4/terms.js"></script>
+  <script src="../../js/weeks/week4/part-a.js"></script>
+  <script src="../../js/weeks/week4/part-b.js"></script>
+  <script src="../../js/weeks/week4/week.js"></script>
+  <script src="../../js/weeks/week5/terms.js"></script>
+  <script src="../../js/weeks/week5/part-a.js"></script>
+  <script src="../../js/weeks/week5/part-b.js"></script>
+  <script src="../../js/weeks/week5/week.js"></script>
+  <script src="../../js/weeks/week6/terms.js"></script>
+  <script src="../../js/weeks/week6/part-a.js"></script>
+  <script src="../../js/weeks/week6/part-b.js"></script>
+  <script src="../../js/weeks/week6/week.js"></script>
+  <script src="mid04.js"></script>
+  <script src="../../js/exam.js"></script>
+  <script src="../../js/search-logic.js"></script>
+  <script src="../../js/render.js"></script>
+</body>
+</html>

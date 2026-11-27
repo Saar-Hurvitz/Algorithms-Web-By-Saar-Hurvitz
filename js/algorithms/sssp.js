@@ -40,7 +40,7 @@ window.Algorithms = window.Algorithms || {};
     const fmt = x => (x === undefined ? '' : x === Infinity ? '∞' : String(x));
     const fmtPi = x => (x === undefined ? '' : x === null ? 'NIL' : name(x));
     const counts = {}, frames = [];
-    const st = { Q: [], done: [], holding: null, relaxes: 0 };
+    const st = { Q: [], done: [], holding: null, relaxes: 0, drops: 0 };
 
     const snap = (line, msg, extra = {}) => {
       if (line != null) counts[line] = (counts[line] || 0) + 1;
@@ -49,6 +49,8 @@ window.Algorithms = window.Algorithms || {};
       st.done.forEach(v => { nodeStates[v] = 'c1'; });
       const vars = [];
       if (st.relaxes) vars.push(`relax calls = ${st.relaxes}`);
+      /* p.watch (an exam preset): count how many times that vertex's d went down */
+      if (p.watch) vars.push(`${name(p.watch)}.d went down ${st.drops} ${st.drops === 1 ? 'time' : 'times'}`);
       frames.push(Object.assign({
         line, msg, counts: { ...counts },
         D: ids.map(v => fmt(d[v]) || null), side: ids.map(v => fmtPi(pi[v])),
@@ -87,6 +89,7 @@ window.Algorithms = window.Algorithms || {};
       if (!better) return false;
       const old = d[v];
       d[v] = d[u] + w;
+      if (v === p.watch) st.drops++;
       snap(first + 1, `${name(v)}.d = ${d[v]}${old === Infinity ? '' : ` (it was ${old})`}.`, Object.assign({}, on, { changed: index[v] }));
       pi[v] = u;
       snap(first + 2, `${name(v)}.π = ${name(u)}: the best path known to ${name(v)} now ends with the edge (${name(u)},${name(v)}).`, Object.assign({}, on, { sideChanged: index[v] }));
@@ -307,6 +310,8 @@ window.Algorithms = window.Algorithms || {};
     return Object.assign(common(t, p), { frames: t.frames, code, sections, panels: { queue: false, holder: false, output: detect }, outName: 'Printed' });
   }
 
+  /* Exam pages build their own presets from Exercises.graphs with this */
+  Algorithms.ssspPreset = preset;
   Algorithms.dagSP = { presets: { g11: preset('5L11') }, defaultPreset: 'g11', modes: [{ id: 'dag', label: 'DAG' }], build: buildDag };
   Algorithms.dijkstra = {
     presets: { g24: preset('5L24'), gR15: preset('5R15′'), g6L41: preset('6L41'), g6L51: preset('6L51'), g6R39: preset('6R39') }, defaultPreset: 'g24',

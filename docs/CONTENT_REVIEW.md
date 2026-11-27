@@ -11,6 +11,9 @@ The review is built to be cheap and reliable:
 ## When it runs
 **Only after new information is added to the site**: a new week (`/add-week`, `/add-week-no-checklist`), a connected checklist (`/connect-checklist`), or new entries, terms, exercises, graphs or algorithms added to an existing week. It reviews **only what was just added or changed**. Content that was already reviewed and is unchanged is never reviewed again, and the review is never run on the whole site.
 
+## Past exams
+A past exam (past-exams/<id>/) is reviewed the same way, as a unit of its own: `node tools/review-pack.js exam <id>` builds the pack (its "slides" are the exam's pages; every page is LOOK, because Hebrew extraction reverses mixed runs and loses the blue solutions and underlined answers), and `node tools/review-fingerprints.js record exam:<id> "<title>"` records it. The reviewers also check that the official solution is word for word and kept apart from the site's notes, and that each answer key matches the underlined answer.
+
 ## 1. Prepare (main session)
 1. `node tools/review-fingerprints.js check`. Keep from the scope only what is **CHANGED** or **NEW**; UNCHANGED items were reviewed and have not been edited since. Read the **Settled decisions** of the week in `docs/REVIEW_LOG.md`.
 2. `node tools/check-answers.js` must pass. The reviewers rely on it, so they don't recompute runs, matrices or distances by hand.

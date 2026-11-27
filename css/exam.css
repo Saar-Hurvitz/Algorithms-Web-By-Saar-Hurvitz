@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Past-exam pages (past-exams/<id>/index.html), loaded after style.css.
+   The page is Hebrew, right to left. Formulas, graphs, animations and the
+   exercise widgets (all in English) stay left to right.
+   ========================================================================== */
+.exam-page {
+  --font-read: "Assistant", "Literata", Georgia, serif;
+  --font-ui: "Assistant", "Source Sans 3", system-ui, sans-serif;
+}
+
+/* ---------- Mirror the layout for right to left ---------- */
+[dir="rtl"] .toc { border-right: 0; border-left: 1px solid var(--rule); }
+[dir="rtl"] .box { border-left-width: 1px; border-right-width: 5px; border-radius: var(--radius-card) 4px 4px var(--radius-card); }
+[dir="rtl"] .box.definition { border-right-color: var(--pen); }
+[dir="rtl"] .box.theorem { border-right-color: var(--theorem); }
+[dir="rtl"] .callout { padding: .85rem 2.9rem .85rem 1.1rem; }
+[dir="rtl"] .callout::before { left: auto; right: .95rem; }
+[dir="rtl"] .back-jump { right: auto; left: 1.25rem; }
+[dir="rtl"] .skip-link { left: auto; right: -999px; }
+[dir="rtl"] .skip-link:focus { right: 1rem; }
+[dir="rtl"] .toc li .algo-tag { margin-left: 0; margin-right: .3rem; }
+[dir="rtl"] .slide-thumb { text-align: right; }
+@media (max-width: 900px) {
+  [dir="rtl"] .toc { left: auto; right: 0; transform: translateX(102%); }
+  [dir="rtl"] .toc.open { transform: none; }
+}
+
+/* Left to right islands inside the Hebrew page */
+[dir="rtl"] .katex { direction: ltr; unicode-bidi: isolate; }
+[dir="rtl"] .term-tip, .exam-viz, .exam-fig, [dir="rtl"] .search-panel { direction: ltr; text-align: left; }
+
+[dir="rtl"] table.model th, [dir="rtl"] table.model td { text-align: right; }
+.exam-score { width: auto; min-width: 12rem; margin: .5rem 0 1rem; }
+
+/* ---------- Width: the Hebrew text keeps its reading width (on the right); the
+   visualizations, which are left to right, use the whole width of the page, as the
+   weekly pages' animations do (.entry.has-algo in style.css) ---------- */
+.exam-page .entry { max-width: 1400px; }
+.exam-page .entry-body { max-width: none; }
+.exam-page .entry-head, .exam-page .entry-meta, .exam-page .slides,
+.exam-page .entry-body > :not(.exam-q), .exam-q > :not(.exam-solution), .exam-solution > :not(.exam-viz) { max-width: calc(var(--measure) + 6rem); }
+.exam-viz { direction: ltr; text-align: left; width: 100%; }
+
+/* ---------- One question ---------- */
+.exam-part-note { color: var(--ink-soft); font-size: .95rem; margin: 0 0 1rem; }
+.exam-stem { margin-bottom: 1rem; }
+.exam-figs { direction: ltr; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .75rem; margin: .75rem 0; }
+.exam-fig { margin: .5rem 0; direction: ltr; }
+.exam-fig .ex-graph { max-width: 460px; }
+.exam-fig figcaption { font-family: var(--font-ui); font-size: .85rem; color: var(--ink-soft); text-align: center; }
+
+.exam-options { display: flex; flex-direction: column; gap: .5rem; margin: 0 0 .75rem; }
+.exam-options.tf { flex-direction: row; flex-wrap: wrap; }
+.exam-opt {
+  display: flex; gap: .7rem; align-items: baseline; width: 100%; text-align: right;
+  font: inherit; color: inherit; background: var(--card); cursor: pointer;
+  border: 1px solid var(--rule); border-radius: var(--radius-card); padding: .6rem .9rem;
+  transition: border-color .2s, background .2s;
+}
+.exam-options.tf .exam-opt { width: auto; min-width: 8rem; justify-content: center; font-weight: 700; }
+.exam-opt:hover { border-color: var(--pen); }
+.exam-mark { flex: none; width: 1.05rem; height: 1.05rem; border-radius: 50%; border: 2px solid var(--ink-soft); transform: translateY(.15rem); transition: background .2s, border-color .2s; }
+.exam-options.tf .exam-mark { display: none; }
+.exam-opt.right { border-color: var(--intuition); background: var(--intuition-wash); }
+.exam-opt.right .exam-mark { border-color: var(--intuition); background: var(--intuition); }
+.exam-opt.wrong { border-color: var(--crucial); background: var(--caution-wash); }
+.exam-opt.wrong .exam-mark { border-color: var(--crucial); background: var(--crucial); }
+
+.exam-feedback { min-height: 1.4rem; margin: 0 0 .5rem; font-family: var(--font-ui); font-weight: 700; }
+.exam-feedback.ok { color: var(--intuition); }
+.exam-feedback.fail { color: var(--crucial); }
+
+.exam-show {
+  font-family: var(--font-ui); font-weight: 700; font-size: .95rem; cursor: pointer;
+  background: var(--ink); color: var(--paper); border: 0; border-radius: var(--radius-chip); padding: .5rem 1.1rem;
+}
+.exam-show:hover { background: var(--pen); }
+.exam-show[aria-expanded="true"] { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); }
+
+.exam-solution { margin-top: 1rem; }
+.box.solution { border-right-color: var(--pen); background: linear-gradient(var(--pen-wash), var(--pen-wash)) padding-box; }
+.box.solution .box-label { color: var(--pen); }
+.exam-official { color: var(--pen); font-size: 1.05rem; }
+.exam-answer { margin-bottom: .4rem; }
+.exam-viz { margin: 1rem 0; }
+.exam-taught { font-family: var(--font-ui); font-size: .92rem; color: var(--ink-soft); }
+.exam-taught a { direction: ltr; unicode-bidi: isolate; }
+
+/* ---------- Exam widgets ---------- */
+.ex-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+.seq-chip.db-0 { background: var(--pen-wash); }
+.seq-chip.db-1 { background: var(--caution-wash); }
+.tree-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: .3rem; margin: .75rem 0; }
+.tree-cell { margin: 0; text-align: center; transition: opacity .3s; }
+.tree-cell figcaption { font-family: var(--font-mono, monospace); font-size: .72rem; color: var(--ink-soft); }
+.tree-grid.filtered .tree-cell:not(.leaf1) { opacity: .15; }
+.tree-grid.filtered .tree-cell.leaf1 svg { background: var(--intuition-wash); border-radius: 6px; }
+.mini-tree { width: 100%; display: block; }
+.mini-tree line { stroke: var(--ink); stroke-width: 3; }
+.mini-tree circle { fill: var(--card); stroke: var(--ink-soft); stroke-width: 2; }
+.mini-tree circle.one { fill: var(--pen); stroke: var(--pen); }
+.mini-tree text { font-size: 12px; text-anchor: middle; fill: var(--ink); font-family: var(--font-ui); }
+.mini-tree circle.one + text { fill: var(--paper); font-weight: 700; }
+
+/* ---------- Exams list (past-exams/index.html) ---------- */
+.exam-list { list-style: none; padding: 0; }
+.exam-list li { margin: .6rem 0; padding: .8rem 1rem; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-card); }
+.exam-list a { font-weight: 700; }

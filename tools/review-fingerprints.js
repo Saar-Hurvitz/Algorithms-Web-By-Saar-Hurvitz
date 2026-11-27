@@ -6,6 +6,9 @@
 //       Lists every item as UNCHANGED (reviewed, same source: skip it),
 //       CHANGED (reviewed, but edited since: review again) or NEW (never reviewed).
 //   node tools/review-fingerprints.js record <week> "<review title>" [extra items...]
+//   node tools/review-fingerprints.js record exam:<id> "<review title>" [extra items...]
+//       A past exam (past-exams/<id>/): its data file, its checks, the shared exam.js and
+//       exam.css, and its graphs (Exercises.graphs keys that start with its deck).
 //       After a review: writes the current fingerprints of that week's entries,
 //       terms and Exercises.graphs, plus the extra items, into the log.
 //
@@ -60,11 +63,20 @@ const weekItems = n => {
   ];
 };
 
+/* Everything a past exam owns */
+const examIds = fs.existsSync(d + '/past-exams') ? fs.readdirSync(d + '/past-exams').filter(x => fs.existsSync(`${d}/past-exams/${x}/${x}.js`)) : [];
+const examItems = id => {
+  const src = fs.readFileSync(`${d}/past-exams/${id}/${id}.js`, 'utf8'), deck = (src.match(/deck: '(\w+)'/) || [])[1];
+  return [`file:past-exams/${id}/${id}.js`, `file:past-exams/${id}/index.html`, `file:tools/checks/exam-${id}.js`, 'file:js/exam.js', 'file:css/exam.css',
+    ...Object.keys(Exercises.graphs).filter(k => deck && k.startsWith(deck)).map(k => `graph:${k}`)];
+};
+const itemsOf = w => (String(w).startsWith('exam:') ? examItems(String(w).slice(5)) : weekItems(w));
+
 const [cmd, ...args] = process.argv.slice(2);
 if (cmd === 'record') {
   const [week, title, ...extra] = args;
   if (!week || !title) { console.error('usage: record <week> "<review title>" [items...]'); process.exit(1); }
-  const items = [...weekItems(week), ...extra];
+  const items = [...new Set([...itemsOf(week), ...extra])];
   const bad = items.filter(i => sourceOf(i) == null);
   if (bad.length) { console.error('Unknown items:', bad.join(' ')); process.exit(1); }
   const { text, rows } = readLog();
@@ -77,7 +89,7 @@ if (cmd === 'record') {
   console.log(`Recorded ${items.length} items for week ${week}.`);
 } else if (cmd === 'check') {
   const { rows } = readLog();
-  const all = [...new Set([...C.weeks.flatMap(w => weekItems(w.n)), ...Object.keys(rows)])];
+  const all = [...new Set([...C.weeks.flatMap(w => weekItems(w.n)), ...examIds.flatMap(examItems), ...Object.keys(rows)])];
   const out = { UNCHANGED: [], CHANGED: [], NEW: [] };
   all.forEach(i => {
     if (!rows[i]) out.NEW.push(i);

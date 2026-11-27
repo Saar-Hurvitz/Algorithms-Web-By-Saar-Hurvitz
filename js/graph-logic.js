@@ -755,7 +755,73 @@ window.GraphLogic = (function () {
     return best;
   }
 
+  /* ---------------- Past exams ---------------- */
+
+  /* Every neighbor-list order of an undirected graph: one { v: [neighbors] } per choice */
+  function allListOrders(ids, edges) {
+    const adj = neighbors(ids, edges);
+    const perms = a => (a.length <= 1 ? [a] : a.flatMap((x, i) => perms([...a.slice(0, i), ...a.slice(i + 1)]).map(p => [x, ...p])));
+    let out = [{}];
+    ids.forEach(v => { out = out.flatMap(lists => perms(adj[v]).map(p => Object.assign({}, lists, { [v]: p }))); });
+    return out;
+  }
+  const treeKey = tree => tree.map(e => e.slice().sort().join('-')).sort().join(' ');
+  const leavesOf = (ids, tree) => ids.filter(v => !tree.some(([a]) => a === v));
+
+  /* Every tree BFS can build from `start`, one per choice of neighbor order. [[parent, child], …] lists. */
+  function allBfsTrees(ids, edges, start) {
+    const seen = new Set(), out = [];
+    allListOrders(ids, edges).forEach(lists => {
+      const t = bfsRun(lists, start).tree, k = treeKey(t);
+      if (!seen.has(k)) { seen.add(k); out.push(t); }
+    });
+    return out;
+  }
+  const sameTree = (t1, t2) => treeKey(t1) === treeKey(t2);
+
+  /* A vertex that is a leaf of some DFS(start) tree but not of some BFS(start) tree.
+     sameLists: both runs read the same neighbor lists (the recitation's "same data structure", 6R47).
+     Returns { u, dfs, bfs, lists? } or null. */
+  function leafGap(ids, edges, start, sameLists) {
+    if (sameLists) {
+      for (const lists of allListOrders(ids, edges)) {
+        const dfs = dfsRun(lists, start).tree, bfs = bfsRun(lists, start).tree, bl = leavesOf(ids, bfs);
+        const u = leavesOf(ids, dfs).find(v => !bl.includes(v));
+        if (u) return { u, dfs, bfs, lists };
+      }
+      return null;
+    }
+    const bfsTrees = allBfsTrees(ids, edges, start);
+    for (const dfs of allDfsTrees(ids, edges, start)) {
+      for (const bfs of bfsTrees) {
+        const bl = leavesOf(ids, bfs), u = leavesOf(ids, dfs).find(v => !bl.includes(v));
+        if (u) return { u, dfs, bfs };
+      }
+    }
+    return null;
+  }
+
+  /* The word of a tree on the vertices 1..n (Prüfer): remove the smallest leaf and
+     write down its neighbor, n − 2 times. Not taught in the course: used by an exam solution. */
+  function pruferCode(ids, edges) {
+    const adj = neighbors(ids, edges), left = new Set(ids), out = [];
+    for (let k = 0; k < ids.length - 2; k++) {
+      const leaf = [...left].filter(v => adj[v].filter(w => left.has(w)).length === 1).sort((a, b) => +a - +b)[0];
+      out.push(adj[leaf].find(w => left.has(w)));
+      left.delete(leaf);
+    }
+    return out.join('');
+  }
+
+  /* A De Bruijn sequence over {0,…,σ−1}: the first letter of each edge word along an Euler cycle of G(σ,n) (2L31) */
+  function deBruijnSequence(sigma, n) {
+    const g = deBruijnGraph(sigma, n);
+    const tour = eulerTour(g.ids, g.edges.map(e => [e.from, e.to]), true);
+    return tour.edges.map(i => g.edges[i].word[0]).join('');
+  }
+
   return {
+    allListOrders, allBfsTrees, sameTree, leafGap, leavesOf, pruferCode, deBruijnSequence,
     topoOrder, dagShortestPaths, dijkstraRun, bellmanFordRun, bellmanFordBestOrder, shiftWeights, allShortestPaths,
     almostValidGraph, almostValidDistances, oneNegativeEdge,
     bellmanFordDetect, bellmanFordTreeOrder, floydWarshall, gasStationsGraph, gasStationsDistances, pizzaGraph, pizzaDistances,
